@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="pupper_hunt.LogoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:pupper_hunt"
+             mc:Ignorable="d" 
+             d:DesignHeight="255" d:DesignWidth="255">
+    <Grid>
+        <Grid x:Name="Logo" Margin="0" HorizontalAlignment="Center" Height="255" Width="255" VerticalAlignment="Top">
+            <Ellipse x:Name="Circle" Fill="#FF499BFD" HorizontalAlignment="Center" Height="255" Margin="0" VerticalAlignment="Top" Width="255"/>
+            <Grid x:Name="Bone" Margin="0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="35.934"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Ellipse Fill="White" HorizontalAlignment="Left" Height="35.659" VerticalAlignment="Top" Width="35.659"/>
+                <Ellipse Fill="White" HorizontalAlignment="Left" Height="35.659" Margin="21.705,0,0,0" VerticalAlignment="Top" Width="35.659"/>
+                <Ellipse Fill="White" HorizontalAlignment="Left" Height="35.659" Margin="0,146,0,0" VerticalAlignment="Top" Width="35.659"/>
+                <Ellipse Fill="White" HorizontalAlignment="Left" Height="35.659" Margin="21.705,146,0,0" VerticalAlignment="Top" Width="35.659"/>
+                <Rectangle Fill="White" HorizontalAlignment="Left" Height="146" Margin="16.705,18.015,0,0" VerticalAlignment="Top" Width="25.326"/>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
