@@ -11,34 +11,41 @@
         <Grid x:Name="WelcomeScreen" Margin="0" d:IsHidden="True">
             <local:LogoControl Margin="0,125,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBlock x:Name="LogoName" HorizontalAlignment="Center" Height="48" Margin="0,405,0,0" TextWrapping="Wrap" Text="Pupper Hunt" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
-            <Button x:Name="LoginButton" Content="Log In" HorizontalAlignment="Center" Height="56" Margin="0,500,0,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32"/>
-            <Button x:Name="SignupButton" Content="Sign Up" HorizontalAlignment="Center" Height="56" Margin="56,580,56,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32"/>
+            <Button x:Name="LoginButton" Content="Log In" HorizontalAlignment="Center" Height="56" Margin="0,500,0,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="LoginButton_Click"/>
+            <Button x:Name="SignupButton" Content="Sign Up" HorizontalAlignment="Center" Height="56" Margin="56,580,56,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="SignupButton_Click"/>
 
         </Grid>
         <Grid x:Name="LoginScreen" Margin="0" d:IsHidden="True">
             <local:LogoControl Margin="108.5,125,108.5,389"/>
             <TextBlock x:Name="LogInText" HorizontalAlignment="Center" Height="48" Margin="0,405,0,0" TextWrapping="Wrap" Text="Log In" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
-            <TextBox x:Name="UsernameField" HorizontalAlignment="Center" Height="54" Margin="0,500,0,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
-            <TextBox x:Name="PasswordField" HorizontalAlignment="Center" Height="54" Margin="0,580,0,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
-            <CheckBox x:Name="RememberMeField" Content="Remember Me" HorizontalAlignment="Center" Height="54" Margin="0,660,0,0" VerticalAlignment="Top" Width="360" FontSize="32"/>
+            <TextBox x:Name="UsernameField" HorizontalAlignment="Center" Height="54" Margin="56,458,56,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
+            <TextBox x:Name="PasswordField" HorizontalAlignment="Center" Height="54" Margin="56,536,56,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
+            <CheckBox x:Name="RememberMeField" Content="Remember Me" HorizontalAlignment="Center" Height="54" Margin="56,613,56,0" VerticalAlignment="Top" Width="360" FontSize="32"/>
+            <Button x:Name="ConfirmLoginButton" Content="Log In" HorizontalAlignment="Center" Height="56" Margin="56,667,56,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="ConfirmLoginButton_Click"/>
 
         </Grid>
-        <Grid x:Name="SignUpScreen" d:IsHidden="True">
+        <Grid x:Name="SignUpScreen">
             <TextBlock x:Name="WhoAreYouText" HorizontalAlignment="Center" Height="48" Margin="0,75,0,0" TextWrapping="Wrap" Text="Who Are You?" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
-            <Grid x:Name="DogOwnerBubble" Margin="56,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
-                <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="110" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Owner"/></TextBlock>
-            </Grid>
-            <Grid x:Name="BusinessOwnerBubble" Margin="0,360,56,0" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
-                <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="110" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Business"/><LineBreak/><Run Text="Owner"/></TextBlock>
-            </Grid>
-            <Grid x:Name="DogFanBubble" Margin="75,500,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
-                <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Enthusiast"/></TextBlock>
-            </Grid>
+            <Button x:Name="DogOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="DogOwnerSelectButton_Click" Margin="56,215,0,0">
+                <Grid x:Name="DogOwnerBubble" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
+                    <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="110" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Owner"/></TextBlock>
+                </Grid>
+            </Button>
+            <Button x:Name="BusinessOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="BusinessOwnerSelectButton_Click" Margin="251.658,360,0,0">
+                <Grid x:Name="BusinessOwnerBubble" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
+                    <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="110" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Business"/><LineBreak/><Run Text="Owner"/></TextBlock>
+                </Grid>
+            </Button>
+            <Button x:Name="DogEnthusiastSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="BusinessOwnerSelectButton_Click" Margin="75,500,0,0">
+                <Grid x:Name="DogFanBubble" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
+                    <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Enthusiast"/></TextBlock>
+                </Grid>
+            </Button>
         </Grid>
-        <Grid x:Name="ProfileEditScreen">
+        <Grid x:Name="ProfileEditScreen" d:IsHidden="True">
             <Grid x:Name="ProfilePicEdit" Margin="56,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
                 <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="42.25,15,42.25,0" VerticalAlignment="Top" Width="65.5"/>
@@ -60,6 +67,7 @@
                 <Ellipse Fill="#FFDC0000" HorizontalAlignment="Left" Height="51.109" VerticalAlignment="Top" Width="51.108"/>
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="−" VerticalAlignment="Center" FontSize="48" Margin="0,0,0,10" Foreground="White"/>
             </Grid>
+            <Button x:Name="SaveProfileButton" Content="Save" HorizontalAlignment="Left" Height="50" Margin="389,91,0,0" VerticalAlignment="Top" Width="60" Background="#7900FF5D" BorderBrush="{x:Null}" FontSize="24" Click="SaveProfileButton_Click"/>
         </Grid>
         <Grid x:Name="DogInformationScreen" d:IsHidden="True">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
@@ -90,7 +98,7 @@
             </RichTextBox>
             <Button x:Name="MoreInfoButton" Content="More Information" HorizontalAlignment="Left" Height="41.9" Margin="241.6,718.5,0,0" VerticalAlignment="Top" Width="222"/>
         </Grid>
-        <Grid x:Name="Business_Profile" d:IsHidden="True">
+        <Grid x:Name="BusinessProfileScreen" d:IsHidden="True">
             <TextBlock x:Name="BusinessTitle" HorizontalAlignment="Left" Height="30" Margin="10,130.2,0,0" TextWrapping="Wrap" Text="Jims Jam Bar" VerticalAlignment="Top" Width="453.6" FontFamily="Magneto" FontSize="24" TextAlignment="Center"/>
             <Ellipse x:Name="BusinessPic" Fill="#FF499BFD" HorizontalAlignment="Left" Height="140" Margin="10,179.2,0,0" VerticalAlignment="Top" Width="140"/>
             <Rectangle x:Name="BusinessMap" Fill="#FF499BFD" HorizontalAlignment="Left" Height="140" Margin="10,339.4,0,0" VerticalAlignment="Top" Width="140"/>
@@ -130,40 +138,65 @@
         </Grid>
         <Grid x:Name="Ribbon" Margin="0,0,0,687">
             <Rectangle Fill="#FF499BFD"/>
-            <Grid x:Name="BackButton" HorizontalAlignment="Left" Width="94">
-                <Grid x:Name="BackIcon" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="65">
-                    <Rectangle Fill="White" HorizontalAlignment="Right" Height="15" VerticalAlignment="Center" Width="50"/>
-                    <Path Data="M14.375,40.25 L35,21 34.875,59.375 z" Fill="White" HorizontalAlignment="Left" Height="38.375" Margin="0" Stretch="Fill" VerticalAlignment="Center" Width="20.625"/>
-                </Grid>
-            </Grid>
-            <Grid x:Name="FeedButton" HorizontalAlignment="Left" Width="94" Margin="94,0,0,0">
+            <Button x:Name="Ribbon_FeedButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="#00000000" Click="Ribbon_FeedButton_Click" BorderBrush="{x:Null}" Margin="89,0,0,0">
                 <Grid x:Name="FeedIcon" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="65">
-                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65"/>
-                    <Rectangle Fill="#FF4F4F4F" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="65"/>
-                    <Ellipse Fill="White" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Margin="5,5,0,0"/>
-                    <Rectangle Fill="White" HorizontalAlignment="Right" Height="10" VerticalAlignment="Top" Width="30" Margin="0,10,5,0"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" IsEnabled="False" IsHitTestVisible="False"/>
+                    <Rectangle Fill="#FF4F4F4F" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="65" IsEnabled="False" IsHitTestVisible="False"/>
+                    <Ellipse Fill="White" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Margin="5,5,0,0" IsEnabled="False" IsHitTestVisible="False"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Right" Height="10" VerticalAlignment="Top" Width="30" Margin="0,10,5,0" IsEnabled="False" IsHitTestVisible="False"/>
                 </Grid>
-            </Grid>
-            <Grid x:Name="SearchButton" HorizontalAlignment="Left" Width="95" Margin="188,0,0,0">
+            </Button>
+            <Button x:Name="Ribbon_SearchButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Height="82" Background="{x:Null}" Click="Ribbon_SearchButton_Click" BorderBrush="{x:Null}" Margin="184,0,0,0">
                 <Grid x:Name="SearchIcon" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="65">
                     <Rectangle Fill="#FF4F4F4F" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="40"/>
                     <Ellipse Fill="White" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="30"/>
                     <Path Data="M268,68.5 L235.5,40.5" HorizontalAlignment="Right" Height="30" Margin="0" Stretch="Fill" VerticalAlignment="Bottom" Width="30" Stroke="White" StrokeThickness="6"/>
                 </Grid>
-            </Grid>
-            <Grid x:Name="ProfileButton" HorizontalAlignment="Left" Width="94" Margin="283,0,0,0">
+            </Button>
+            <Button x:Name="Ribbon_ProfileButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="{x:Null}" Click="Ribbon_ProfileButton_Click" BorderBrush="{x:Null}" Margin="283,0,0,0">
                 <Grid x:Name="ProfileIcon" Margin="0" Width="75" Height="75">
                     <Ellipse Fill="White" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="65"/>
                     <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="36" Margin="0,10,0,0" VerticalAlignment="Top" Width="30"/>
                     <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="35" Margin="0,50,0,0" VerticalAlignment="Top" Width="45"/>
                 </Grid>
-            </Grid>
-            <Grid x:Name="HelpButton" HorizontalAlignment="Left" Width="94" Margin="378,0,0,0">
-                <Grid x:Name="HelpIcon" Margin="9.5,3.5" Width="65" Height="65">
+            </Button>
+            <Button x:Name="Ribbon_HelpButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="{x:Null}" Click="Ribbon_HelpButton_Click" BorderBrush="{x:Null}" Margin="378,0,0,0">
+                <Grid x:Name="HelpIcon" Width="65" Height="65">
                     <Ellipse Fill="White"/>
                     <TextBlock TextWrapping="Wrap" Text="?" FontSize="72" Margin="0,3,0,0" Foreground="#FF499BFD" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial"/>
                 </Grid>
+            </Button>
+            <Button x:Name="Ribbon_BackButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="{x:Null}" Click="Ribbon_BackButton_Click" BorderBrush="{x:Null}">
+                <Grid x:Name="BackIcon" Height="71.667" Width="84" IsHitTestVisible="True">
+                    <Rectangle Fill="White" HorizontalAlignment="Right" Height="15" VerticalAlignment="Center" Width="58.375" IsHitTestVisible="True" Margin="0,28.334,0,28.333"/>
+                    <Path Data="M14.375,40.25 L35,21 34.875,59.375 z" Fill="White" HorizontalAlignment="Left" Height="38.375" Margin="0,16.646" Stretch="Fill" VerticalAlignment="Center" Width="25.625" IsHitTestVisible="True"/>
+                </Grid>
+            </Button>
+        </Grid>
+        <Grid x:Name="ProfileScreen" d:IsHidden="True">
+            <Grid x:Name="ProfilePic" Margin="56,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
+                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="42.25,15,42.25,0" VerticalAlignment="Top" Width="65.5"/>
+                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="23.953,96.5,23.953,-23" VerticalAlignment="Top" Width="102.094"/>
             </Grid>
+            <Grid x:Name="DogPic1" Margin="54,500,318.209,179">
+                <Ellipse Fill="#FF499BFD"/>
+                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+            </Grid>
+            <TextBox x:Name="DogName1" HorizontalAlignment="Right" Height="40" Margin="0,525.391,109.5,0" TextWrapping="Wrap" Text="Fido" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
+            <Grid x:Name="Add_Dog_Button1" Margin="158.791,538.891,262.101,179"/>
+            <Grid x:Name="RemoveDogButton1" Margin="54,538.891,366.892,179"/>
+            <TextBlock x:Name="DisplayName" HorizontalAlignment="Left" Height="40" Margin="233,160,0,0" TextWrapping="Wrap" Text="John Smith" VerticalAlignment="Top" Width="185" FontSize="24"/>
+            <TextBlock x:Name="DisplayProfile" HorizontalAlignment="Left" Height="125" Margin="58,280,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin eu nibh sit amet suscipit." VerticalAlignment="Top" Width="360" FontSize="24"/>
+            <Grid x:Name="DogPic2" Margin="54,602,318.209,77">
+                <Ellipse Fill="#FF499BFD"/>
+                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+            </Grid>
+            <TextBox x:Name="DogName2" HorizontalAlignment="Right" Height="40" Margin="0,627.391,109.5,0" TextWrapping="Wrap" Text="Rover" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
+            <Button x:Name="Profile_EditButton" Content="Edit" HorizontalAlignment="Left" Height="60.5" Margin="378.5,94.5,0,0" VerticalAlignment="Top" Width="66" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" Click="Profile_EditButton_Click"/>
+        </Grid>
+        <Grid x:Name="FeedScreen" HorizontalAlignment="Left" Height="769" VerticalAlignment="Top" Width="472" d:IsHidden="True">
+            <TextBlock HorizontalAlignment="Left" Height="100" Margin="72,241,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="36" Text="News Feed"/>
         </Grid>
     </Grid>
 </Window>
