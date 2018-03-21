@@ -7,7 +7,7 @@
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="pupper_hunt.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="480">
-    <Grid x:Name="Screens">
+    <Grid x:Name="Screens" d:IsHidden="True">
         <Grid x:Name="WelcomeScreen" Margin="0" d:IsHidden="True">
             <local:LogoControl Margin="0,125,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBlock x:Name="LogoName" HorizontalAlignment="Center" Height="48" Margin="0,405,0,0" TextWrapping="Wrap" Text="Pupper Hunt" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
@@ -38,7 +38,7 @@
                 <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Enthusiast"/></TextBlock>
             </Grid>
         </Grid>
-        <Grid x:Name="ProfileEditScreen">
+        <Grid x:Name="ProfileEditScreen" d:IsHidden="True">
             <Grid x:Name="ProfilePicEdit" Margin="56,98.45,266,520.55">
                 <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
                 <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="42.25,15,42.25,0" VerticalAlignment="Top" Width="65.5"/>
@@ -62,13 +62,14 @@
             </Grid>
         </Grid>
         <Grid x:Name="DogInformationScreen" d:IsHidden="True">
-            <TextBlock x:Name="WhoAreYouText1" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
-            <Grid x:Name="DogOwnerBubble1" Margin="56,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Grid x:Name="DogFanBubble1" Margin="75,500,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="340" Margin="67,148.4,66.6,282" VerticalAlignment="Center" Width="340"/>
-            <ed:BlockArrow Fill="#FF499BFD" HorizontalAlignment="Left" Height="35" Margin="428.6,298.7,0,436.7" Orientation="Right" VerticalAlignment="Center" Width="35" RenderTransformOrigin="0.552,1.379"/>
-            <ed:BlockArrow Fill="#FF499BFD" HorizontalAlignment="Left" Height="35" Margin="10,298.7,0,436.7" Orientation="Left" VerticalAlignment="Center" Width="35"/>
-            <RichTextBox HorizontalAlignment="Left" Height="204.4" Margin="241.6,500,0,0" VerticalAlignment="Top" Width="222" FontWeight="Bold">
+            <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
+            <Grid x:Name="BreedPic" Margin="66.2,147.7,65.8,281.3">
+                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="340" VerticalAlignment="Center" Width="340"/>
+                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" HorizontalAlignment="Center" Height="185.238" Margin="62.291,77.381" Stretch="Fill" VerticalAlignment="Center" Width="215.418"/>
+            </Grid>
+            <!--<ed:BlockArrow Fill="#FF499BFD" HorizontalAlignment="Left" Height="35" Margin="428.6,298.7,0,436.7" Orientation="Right" VerticalAlignment="Center" Width="35" RenderTransformOrigin="0.552,1.379"/>
+            <ed:BlockArrow Fill="#FF499BFD" HorizontalAlignment="Left" Height="35" Margin="10,298.7,0,436.7" Orientation="Left" VerticalAlignment="Center" Width="35"/>-->
+            <RichTextBox x:Name="BreedInfoText" HorizontalAlignment="Left" Height="204.4" Margin="241.6,500,0,0" VerticalAlignment="Top" Width="222" FontWeight="Bold">
                 <FlowDocument>
                     <Paragraph>
                         <Run Text="Newfoundland Information"/>
@@ -87,14 +88,13 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <Button Content="More Information" HorizontalAlignment="Left" Height="41.9" Margin="241.6,718.5,0,0" VerticalAlignment="Top" Width="222"/>
+            <Button x:Name="MoreInfoButton" Content="More Information" HorizontalAlignment="Left" Height="41.9" Margin="241.6,718.5,0,0" VerticalAlignment="Top" Width="222"/>
         </Grid>
-        <Grid x:Name="Business_Profile">
-            <Grid x:Name="DogOwnerBubble2" Margin="56,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Grid x:Name="DogFanBubble2" Margin="75,500,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="140" Margin="10,179.2,0,0" VerticalAlignment="Top" Width="140"/>
-            <Rectangle Fill="#FF499BFD" HorizontalAlignment="Left" Height="140" Margin="10,339.4,0,0" VerticalAlignment="Top" Width="140"/>
-            <RichTextBox HorizontalAlignment="Left" Height="140" Margin="185.2,179.2,0,0" VerticalAlignment="Top" Width="278.4">
+        <Grid x:Name="Business_Profile" d:IsHidden="True">
+            <TextBlock x:Name="BusinessTitle" HorizontalAlignment="Left" Height="30" Margin="10,130.2,0,0" TextWrapping="Wrap" Text="Jims Jam Bar" VerticalAlignment="Top" Width="453.6" FontFamily="Magneto" FontSize="24" TextAlignment="Center"/>
+            <Ellipse x:Name="BusinessPic" Fill="#FF499BFD" HorizontalAlignment="Left" Height="140" Margin="10,179.2,0,0" VerticalAlignment="Top" Width="140"/>
+            <Rectangle x:Name="BusinessMap" Fill="#FF499BFD" HorizontalAlignment="Left" Height="140" Margin="10,339.4,0,0" VerticalAlignment="Top" Width="140"/>
+            <RichTextBox x:Name="BusinessDescription" HorizontalAlignment="Left" Height="140" Margin="185.2,179.2,0,0" VerticalAlignment="Top" Width="278.4">
                 <FlowDocument>
                     <Paragraph>
                         <Run FontWeight="Bold" Text="Jims Jam Bar"/>
@@ -104,7 +104,7 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <RichTextBox HorizontalAlignment="Left" Height="140" Margin="185.2,339.4,0,0" VerticalAlignment="Top" Width="278.4">
+            <RichTextBox x:Name="AddressText" HorizontalAlignment="Left" Height="140" Margin="185.2,339.4,0,0" VerticalAlignment="Top" Width="278.4">
                 <FlowDocument>
                     <Paragraph>
                         <Run FontWeight="Bold" Text="Address"/>
@@ -118,15 +118,15 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <RichTextBox HorizontalAlignment="Left" Height="260.4" Margin="10,500,0,0" VerticalAlignment="Top" Width="453.6">
+            <RichTextBox x:Name="DetailedDescription" HorizontalAlignment="Left" Height="260.4" Margin="10,500,0,0" VerticalAlignment="Top" Width="453.6">
                 <FlowDocument>
                     <Paragraph>
                         <Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+                        <Run Text=" "/>
                         <Run Text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-                <TextBlock HorizontalAlignment="Left" Height="30" Margin="10,130.2,0,0" TextWrapping="Wrap" Text="Jims Jam Bar" VerticalAlignment="Top" Width="453.6" FontFamily="Magneto" FontSize="24" TextAlignment="Center"/>
-            </Grid>
+        </Grid>
     </Grid>
 </Window>
