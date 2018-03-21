@@ -24,7 +24,7 @@
             <Button x:Name="ConfirmLoginButton" Content="Log In" HorizontalAlignment="Center" Height="56" Margin="56,667,56,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="ConfirmLoginButton_Click"/>
 
         </Grid>
-        <Grid x:Name="SignUpScreen">
+        <Grid x:Name="SignUpScreen" d:IsHidden="True">
             <TextBlock x:Name="WhoAreYouText" HorizontalAlignment="Center" Height="48" Margin="0,75,0,0" TextWrapping="Wrap" Text="Who Are You?" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
             <Button x:Name="DogOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="DogOwnerSelectButton_Click" Margin="56,215,0,0">
                 <Grid x:Name="DogOwnerBubble" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -159,7 +159,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Katie's Cafe is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
             </Grid>
         </Grid>
-        <Grid x:Name="Search_Screen" d:IsHidden="True">
+        <Grid x:Name="SearchScreen" d:IsHidden="True">
             <TextBox x:Name="SearchBox" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
             <Grid x:Name="DoSearchButton" Margin="402.75,112.75,36,623">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
@@ -176,7 +176,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid x:Name="HelpScreen">
+        <Grid x:Name="HelpScreen" d:IsHidden="True">
             <TextBox x:Name="SearchBox1" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="What do you need help with?" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
             <Grid x:Name="DoSearchButton1" Margin="402.75,112.75,36,623">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
@@ -251,9 +251,6 @@
             </Grid>
             <TextBox x:Name="DogName2" HorizontalAlignment="Right" Height="40" Margin="0,627.391,109.5,0" TextWrapping="Wrap" Text="Rover" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
             <Button x:Name="Profile_EditButton" Content="Edit" HorizontalAlignment="Left" Height="60.5" Margin="378.5,94.5,0,0" VerticalAlignment="Top" Width="66" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" Click="Profile_EditButton_Click"/>
-        </Grid>
-        <Grid x:Name="FeedScreen" HorizontalAlignment="Left" Height="769" VerticalAlignment="Top" Width="472" d:IsHidden="True">
-            <TextBlock HorizontalAlignment="Left" Height="100" Margin="72,241,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="36" Text="News Feed"/>
         </Grid>
     </Grid>
 </Window>

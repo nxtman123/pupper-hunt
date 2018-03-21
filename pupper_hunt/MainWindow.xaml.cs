@@ -31,7 +31,9 @@ namespace pupper_hunt
             ProfileScreen.Visibility = Visibility.Hidden;
             DogInformationScreen.Visibility = Visibility.Hidden;
             BusinessProfileScreen.Visibility = Visibility.Hidden;
-            FeedScreen.Visibility = Visibility.Hidden;
+            NewsFeedScreen.Visibility = Visibility.Hidden;
+            SearchScreen.Visibility = Visibility.Hidden;
+            HelpScreen.Visibility = Visibility.Hidden;
             Ribbon.Visibility = Visibility.Hidden;
 
             // Starting Screen
@@ -60,8 +62,8 @@ namespace pupper_hunt
             mGridStack.Peek().Visibility = Visibility.Hidden;
             mGridStack.Clear();
             Ribbon.Visibility = Visibility.Visible;
-            FeedScreen.Visibility = Visibility.Visible;
-            mGridStack.Push(FeedScreen);
+            NewsFeedScreen.Visibility = Visibility.Visible;
+            mGridStack.Push(NewsFeedScreen);
         }
 
         private void DogOwnerSelectButton_Click(object sender, RoutedEventArgs e)
@@ -104,17 +106,22 @@ namespace pupper_hunt
 
         private void Ribbon_FeedButton_Click(object sender, RoutedEventArgs e)
         {
-            if (mGridStack.Peek() != FeedScreen)
+            if (mGridStack.Peek() != NewsFeedScreen)
             {
                 mGridStack.Peek().Visibility = Visibility.Hidden;
-                FeedScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(FeedScreen);
+                NewsFeedScreen.Visibility = Visibility.Visible;
+                mGridStack.Push(NewsFeedScreen);
             }
         }
 
         private void Ribbon_SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Search Button Clicked but not yet implimented");
+            if (mGridStack.Peek() != SearchScreen)
+            {
+                mGridStack.Peek().Visibility = Visibility.Hidden;
+                SearchScreen.Visibility = Visibility.Visible;
+                mGridStack.Push(SearchScreen);
+            }
         }
 
         private void Ribbon_ProfileButton_Click(object sender, RoutedEventArgs e)
@@ -129,7 +136,12 @@ namespace pupper_hunt
 
         private void Ribbon_HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Help Button Clicked but not yet implimented");
+            if (mGridStack.Peek() != HelpScreen)
+            {
+                mGridStack.Peek().Visibility = Visibility.Hidden;
+                HelpScreen.Visibility = Visibility.Visible;
+                mGridStack.Push(HelpScreen);
+            }
         }
 
         private void Profile_EditButton_Click(object sender, RoutedEventArgs e)
@@ -151,7 +163,7 @@ namespace pupper_hunt
             if (mGridStack.Peek() == SignUpScreen)
             {
                 mGridStack.Clear();
-                mGridStack.Push(FeedScreen);
+                mGridStack.Push(NewsFeedScreen);
                 Ribbon.Visibility = Visibility.Visible;
             }
             mGridStack.Peek().Visibility = Visibility.Visible;
