@@ -151,7 +151,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Katie's Cafe is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
             </Grid>
         </Grid>
-        <Grid x:Name="Search_Screen">
+        <Grid x:Name="Search_Screen" d:IsHidden="True">
             <TextBox x:Name="SearchBox" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
             <Grid x:Name="DoSearchButton" Margin="402.75,112.75,36,623">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
@@ -165,6 +165,23 @@
                 <Grid x:Name="SearchResult1" Margin="0,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
                     <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 5 hours at Nose Hill Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="HelpScreen">
+            <TextBox x:Name="SearchBox1" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="What do you need help with?" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
+            <Grid x:Name="DoSearchButton1" Margin="402.75,112.75,36,623">
+                <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
+                <Path Data="M453.25,141.25 L438.5,127.25" HorizontalAlignment="Left" Height="17" Margin="15.5,16.25,0,0" Stretch="Fill" Stroke="Black" StrokeThickness="3" VerticalAlignment="Top" Width="17.75"/>
+            </Grid>
+            <Grid x:Name="SearchResults1" Margin="36,180,36,405">
+                <Grid x:Name="SearchResult2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="380"><Run FontWeight="Bold" Text="Events"/><LineBreak/><Run Text="How to add an event"/></TextBlock>
+                </Grid>
+                <Grid x:Name="SearchResult3" Margin="0,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="380"><Run FontWeight="Bold" Text="Events"/><LineBreak/><Run Text="How to check into an event"/></TextBlock>
                 </Grid>
             </Grid>
         </Grid>
