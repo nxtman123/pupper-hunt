@@ -38,7 +38,7 @@
                 <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Enthusiast"/></TextBlock>
             </Grid>
         </Grid>
-        <Grid x:Name="ProfileEditScreen">
+        <Grid x:Name="ProfileEditScreen" d:IsHidden="True">
             <Grid x:Name="ProfilePicEdit" Margin="56,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
                 <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="42.25,15,42.25,0" VerticalAlignment="Top" Width="65.5"/>
@@ -127,6 +127,29 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
+        </Grid>
+        <Grid x:Name="NewsFeedScreen">
+            <Grid x:Name="EventItem0" Margin="36,100,36,585">
+                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
+                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 2 hours at Curburn Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
+            </Grid>
+            <Grid x:Name="BusinessNewsItem0" Margin="36,210.5,36,506.5" Height="52">
+                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="52" VerticalAlignment="Top" Width="400"/>
+                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Ted's Pizzaria is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
+            </Grid>
+            <Grid x:Name="FriendPic0" Margin="36,288.5,0,0" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Fill="#FFC7C7C7" Margin="0"/>
+                <TextBlock HorizontalAlignment="Center" Margin="10,0,10,10" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="24" Width="380"><Run/><LineBreak/><Run FontWeight="Bold" Text="Danny"/><LineBreak/><Run Text="Hey check out Fido playing fetch!"/></TextBlock>
+                <Rectangle Fill="#FF268B54" Height="223" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid x:Name="EventItem1" Margin="36,617.5,36,67.5">
+                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
+                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 5 hours at Nose Hill Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
+            </Grid>
+            <Grid x:Name="BusinessNewsItem1" Margin="36,0" Height="52" VerticalAlignment="Bottom">
+                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="52" VerticalAlignment="Top" Width="400"/>
+                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Katie's Cafe is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
+            </Grid>
         </Grid>
         <Grid x:Name="Ribbon" Margin="0,0,0,687">
             <Rectangle Fill="#FF499BFD"/>
