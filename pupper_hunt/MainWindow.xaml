@@ -37,5 +37,28 @@
                 <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Enthusiast"/></TextBlock>
             </Grid>
         </Grid>
+        <Grid x:Name="ProfileEditScreen">
+            <Grid x:Name="ProfilePicEdit" Margin="56,98.45,266,520.55">
+                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
+                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="42.25,15,42.25,0" VerticalAlignment="Top" Width="65.5"/>
+                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="23.953,96.5,23.953,-23" VerticalAlignment="Top" Width="102.094"/>
+            </Grid>
+            <TextBox x:Name="DisplayNameEdit" HorizontalAlignment="Right" Height="40" Margin="0,150,52,0" TextWrapping="Wrap" Text="Display Name" VerticalAlignment="Top" Width="185" BorderBrush="Black" FontSize="24"/>
+            <TextBox x:Name="UserDescriptionEdit" HorizontalAlignment="Center" Height="125" Margin="58,280,54,0" TextWrapping="Wrap" Text="User Description" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
+            <Grid x:Name="DogPicEdit" Margin="54,440,268,179">
+                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
+                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" HorizontalAlignment="Left" Height="76.71" Margin="35.135,24,0,0" Stretch="Fill" VerticalAlignment="Top" Width="88.287"/>
+            </Grid>
+            <TextBox x:Name="DogNameEdit" HorizontalAlignment="Right" Height="40" Margin="0,500,54,0" TextWrapping="Wrap" Text="Dog Name" VerticalAlignment="Top" Width="185" BorderBrush="Black" FontSize="24"/>
+            <TextBox x:Name="DogDescriptionEdit" HorizontalAlignment="Center" Height="125" Margin="58,610,54,0" TextWrapping="Wrap" Text="Dog Description" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
+            <Grid x:Name="Add_Dog_Button" Margin="158.791,538.891,262.101,179">
+                <Ellipse Fill="#FF00A000" HorizontalAlignment="Left" Height="51.109" VerticalAlignment="Top" Width="51.108"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="+" VerticalAlignment="Center" FontSize="48" Margin="0,0,0,10" Foreground="White"/>
+            </Grid>
+            <Grid x:Name="RemoveDogButton" Margin="54,538.891,366.892,179">
+                <Ellipse Fill="#FFDC0000" HorizontalAlignment="Left" Height="51.109" VerticalAlignment="Top" Width="51.108"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="−" VerticalAlignment="Center" FontSize="48" Margin="0,0,0,10" Foreground="White"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
