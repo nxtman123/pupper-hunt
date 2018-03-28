@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace pupper_hunt
 {
     /// <summary>
-    /// Interaction logic for LogoControl.xaml
+    /// Interaction logic for BackButtonControl.xaml
     /// </summary>
-    public partial class LogoControl : UserControl
+    public partial class BackButtonControl : UserControl
     {
-        public LogoControl()
+        public BackButtonControl()
         {
             InitializeComponent();
         }

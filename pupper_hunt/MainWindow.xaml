@@ -9,50 +9,62 @@
         Title="MainWindow" Height="800" Width="480">
     <Grid x:Name="Screens">
         <Grid x:Name="WelcomeScreen" Margin="0" d:IsHidden="True">
-            <local:LogoControl Margin="0,125,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBlock x:Name="LogoName" HorizontalAlignment="Center" Height="48" Margin="0,405,0,0" TextWrapping="Wrap" Text="Pupper Hunt" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
             <Button x:Name="LoginButton" Content="Log In" HorizontalAlignment="Center" Height="56" Margin="0,500,0,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="LoginButton_Click"/>
             <Button x:Name="SignupButton" Content="Sign Up" HorizontalAlignment="Center" Height="56" Margin="56,580,56,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="SignupButton_Click"/>
 
         </Grid>
         <Grid x:Name="LoginScreen" Margin="0" d:IsHidden="True">
-            <local:LogoControl Margin="108.5,125,108.5,389"/>
-            <TextBlock x:Name="LogInText" HorizontalAlignment="Center" Height="48" Margin="0,405,0,0" TextWrapping="Wrap" Text="Log In" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
-            <TextBox x:Name="UsernameField" HorizontalAlignment="Center" Height="54" Margin="56,458,56,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
-            <TextBox x:Name="PasswordField" HorizontalAlignment="Center" Height="54" Margin="56,536,56,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
+            <TextBlock x:Name="LogInText" HorizontalAlignment="Center" Height="48" Margin="56,294.5,56,0" TextWrapping="Wrap" Text="Log In" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
+            <TextBox x:Name="UsernameField" HorizontalAlignment="Center" Height="54" Margin="56,431.5,56,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
+            <PasswordBox x:Name="PasswordField" HorizontalAlignment="Left" Height="54" Margin="56,537,0,0" VerticalAlignment="Top" Width="360" Background="{x:Null}" BorderBrush="Black" FontSize="36"/>
             <CheckBox x:Name="RememberMeField" Content="Remember Me" HorizontalAlignment="Center" Height="54" Margin="56,613,56,0" VerticalAlignment="Top" Width="360" FontSize="32"/>
             <Button x:Name="ConfirmLoginButton" Content="Log In" HorizontalAlignment="Center" Height="56" Margin="56,667,56,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="ConfirmLoginButton_Click"/>
+            <TextBlock x:Name="UsernameLabel" HorizontalAlignment="Left" Height="38.5" Margin="56,393,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="PasswordLabel" HorizontalAlignment="Left" Height="38.5" Margin="56,497.5,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
 
         </Grid>
         <Grid x:Name="SignUpScreen" d:IsHidden="True">
             <TextBlock x:Name="WhoAreYouText" HorizontalAlignment="Center" Height="48" Margin="0,75,0,0" TextWrapping="Wrap" Text="Who Are You?" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
-            <Button x:Name="DogOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="DogOwnerSelectButton_Click" Margin="56,215,0,0">
+            <Button x:Name="DogOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="DogOwnerSelectButton_Click" Margin="56,215,0,0" BorderBrush="{x:Null}">
                 <Grid x:Name="DogOwnerBubble" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
                     <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="110" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Owner"/></TextBlock>
                 </Grid>
             </Button>
-            <Button x:Name="BusinessOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="BusinessOwnerSelectButton_Click" Margin="251.658,360,0,0">
+            <Button x:Name="BusinessOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="BusinessOwnerSelectButton_Click" Margin="251.658,360,0,0" BorderBrush="{x:Null}">
                 <Grid x:Name="BusinessOwnerBubble" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
                     <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="110" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Business"/><LineBreak/><Run Text="Owner"/></TextBlock>
                 </Grid>
             </Button>
-            <Button x:Name="DogEnthusiastSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="BusinessOwnerSelectButton_Click" Margin="75,500,0,0">
+            <Button x:Name="DogEnthusiastSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="BusinessOwnerSelectButton_Click" Margin="75,500,0,0" BorderBrush="{x:Null}">
                 <Grid x:Name="DogFanBubble" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
                     <TextBlock HorizontalAlignment="Center" Height="70" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"><Run Text="Dog"/><LineBreak/><Run Text="Enthusiast"/></TextBlock>
                 </Grid>
             </Button>
         </Grid>
+        <Grid x:Name="CreateAccountScreen" d:IsHidden="True">
+            <Image x:Name="AccountBack" HorizontalAlignment="Left" Height="48" Margin="10,72,0,0" VerticalAlignment="Top" Width="58" MouseDown="Back" Source="back.png"/>
+            <TextBlock x:Name="AccountBanner" HorizontalAlignment="Center" Height="48" Margin="68,72,44,0" TextWrapping="Wrap" Text="Account Details" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
+            <TextBox x:Name="AccountUsernameField" HorizontalAlignment="Center" Height="54" Margin="68,281.5,44,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
+            <TextBlock x:Name="AccountUsernameLabel" HorizontalAlignment="Left" Height="38.5" Margin="68,243,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
+            <TextBox x:Name="AccountPasswordField" HorizontalAlignment="Center" Height="54" Margin="68,390.5,44,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
+            <TextBlock x:Name="AccountPasswordLabel" HorizontalAlignment="Left" Height="38.5" Margin="68,352,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
+
+            <ComboBox x:Name="AccountTypeSelector" HorizontalAlignment="Left" Height="54" Margin="68,493,0,0" VerticalAlignment="Top" Width="357" AutomationProperties.HelpText="&lt;Account Type&gt;" FontSize="24" Foreground="Black">
+                <ComboBoxItem>Dog Owner</ComboBoxItem>
+                <ComboBoxItem>Business Owner</ComboBoxItem>
+            </ComboBox>
+            <TextBlock x:Name="AccountTypeLabel" HorizontalAlignment="Left" Height="38.5" Margin="68,454.5,0,0" TextWrapping="Wrap" Text="Account Type" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="AccountWarning" HorizontalAlignment="Left" Height="37.5" Margin="68,181.5,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" FontSize="24" Foreground="Red" FontWeight="Bold" Visibility="Hidden"><Run Text="Please Fill Out All Fields"/><LineBreak/><Run/></TextBlock>
+            <Button x:Name="AccountCreateButton" Content="Create Account" HorizontalAlignment="Center" Height="56" Margin="65,617.5,47,0" VerticalAlignment="Top" Width="360" BorderBrush="{x:Null}" Background="#FF499BFD" Foreground="White" FontSize="32" Click="CreateAccount_Click"/>
+        </Grid>
         <Grid x:Name="ProfileEditScreen" d:IsHidden="True">
-            <Grid x:Name="ProfilePicEdit" Margin="56,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
-                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="42.25,15,42.25,0" VerticalAlignment="Top" Width="65.5"/>
-                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="23.953,96.5,23.953,-23" VerticalAlignment="Top" Width="102.094"/>
-            </Grid>
-            <TextBox x:Name="DisplayNameEdit" HorizontalAlignment="Right" Height="40" Margin="0,160,52,0" TextWrapping="Wrap" Text="Display Name" VerticalAlignment="Top" Width="185" BorderBrush="Black" FontSize="24"/>
-            <TextBox x:Name="UserDescriptionEdit" HorizontalAlignment="Center" Height="125" Margin="58,280,54,0" TextWrapping="Wrap" Text="User Description" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
+            <TextBox x:Name="ProfileEdit_UserName" HorizontalAlignment="Right" Height="40" Margin="0,113.5,54,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" BorderBrush="Black" FontSize="24"/>
+            <Image x:Name="ProfileEdit_UserImage" HorizontalAlignment="Left" Height="141.5" Margin="58,53,0,0" VerticalAlignment="Top" Width="147.899"/>
+            <TextBox x:Name="ProfileEdit_UserBio" HorizontalAlignment="Center" Height="125" Margin="58,236.5,54,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
             <Grid x:Name="DogPicEdit" Margin="54,440,268,179">
                 <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
                 <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" HorizontalAlignment="Left" Height="76.71" Margin="35.135,24,0,0" Stretch="Fill" VerticalAlignment="Top" Width="88.287"/>
@@ -67,7 +79,33 @@
                 <Ellipse Fill="#FFDC0000" HorizontalAlignment="Left" Height="51.109" VerticalAlignment="Top" Width="51.108"/>
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="−" VerticalAlignment="Center" FontSize="48" Margin="0,0,0,10" Foreground="White"/>
             </Grid>
-            <Button x:Name="SaveProfileButton" Content="Save" HorizontalAlignment="Left" Height="50" Margin="389,91,0,0" VerticalAlignment="Top" Width="60" Background="#7900FF5D" BorderBrush="{x:Null}" FontSize="24" Click="SaveProfileButton_Click"/>
+            <Button x:Name="SaveProfileButton" Content="Save" HorizontalAlignment="Left" Height="50" Margin="402,25.5,0,0" VerticalAlignment="Top" Width="60" Background="#7900FF5D" BorderBrush="{x:Null}" FontSize="24" Click="SaveProfileButton_Click"/>
+            <TextBlock x:Name="ProfileEdit_NameLabel" HorizontalAlignment="Left" Height="37" Margin="233,76.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold"><Run Text="Name"/><LineBreak/><Run/></TextBlock>
+            <TextBlock x:Name="ProfileEdit_NameLabel_Copy" HorizontalAlignment="Left" Height="37" Margin="62,199.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Bio"/>
+        </Grid>
+        <Grid x:Name="ProfileScreen">
+            <Grid x:Name="DogPic1" Margin="54,500,318.209,179">
+                <Ellipse Fill="#FF499BFD"/>
+                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+            </Grid>
+            <TextBox x:Name="DogName1" HorizontalAlignment="Right" Height="40" Margin="0,525.391,109.5,0" TextWrapping="Wrap" Text="Fido" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
+            <Grid x:Name="Add_Dog_Button1" Margin="158.791,538.891,262.101,179"/>
+            <Grid x:Name="RemoveDogButton1" Margin="54,538.891,366.892,179"/>
+            <TextBlock x:Name="Profile_Name" HorizontalAlignment="Left" Height="40" Margin="233,224.5,0,0" TextWrapping="Wrap" Text="John Smith" VerticalAlignment="Top" Width="185" FontSize="24" Background="#190000DC"/>
+            <TextBlock x:Name="Profile_Bio" HorizontalAlignment="Left" Height="125" Margin="58,298.5,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin eu nibh sit amet suscipit." VerticalAlignment="Top" Width="360" FontSize="24" Background="#190000DC"/>
+            <Grid x:Name="DogPic2" Margin="54,602,318.209,77">
+                <Ellipse Fill="#FF499BFD"/>
+                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+            </Grid>
+            <TextBox x:Name="DogName2" HorizontalAlignment="Right" Height="40" Margin="0,627.391,109.5,0" TextWrapping="Wrap" Text="Rover" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
+            <Button x:Name="Profile_EditButton" Content="" HorizontalAlignment="Left" Height="60.5" Margin="396,94.5,0,0" VerticalAlignment="Top" Width="66" BorderBrush="{x:Null}" FontSize="24" Click="Profile_EditButton_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="edit.png"/>
+                </Button.Background>
+            </Button>
+            <Image x:Name="Profile_Image" HorizontalAlignment="Left" Height="170" Margin="54,94.5,0,0" VerticalAlignment="Top" Width="155.399" RenderTransformOrigin="0.56,0.291"/>
+            <TextBlock HorizontalAlignment="Left" Height="29" Margin="233,190.5,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Left" Height="29" Margin="58,264.5,0,0" TextWrapping="Wrap" Text="About" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
         </Grid>
         <Grid x:Name="DogInformationScreen" d:IsHidden="True">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
@@ -229,28 +267,6 @@
                     <Path Data="M14.375,40.25 L35,21 34.875,59.375 z" Fill="White" HorizontalAlignment="Left" Height="38.375" Margin="0,16.646" Stretch="Fill" VerticalAlignment="Center" Width="25.625" IsHitTestVisible="True"/>
                 </Grid>
             </Button>
-        </Grid>
-        <Grid x:Name="ProfileScreen" d:IsHidden="True">
-            <Grid x:Name="ProfilePic" Margin="56,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
-                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="42.25,15,42.25,0" VerticalAlignment="Top" Width="65.5"/>
-                <Ellipse Fill="White" HorizontalAlignment="Center" Height="76.5" Margin="23.953,96.5,23.953,-23" VerticalAlignment="Top" Width="102.094"/>
-            </Grid>
-            <Grid x:Name="DogPic1" Margin="54,500,318.209,179">
-                <Ellipse Fill="#FF499BFD"/>
-                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
-            </Grid>
-            <TextBox x:Name="DogName1" HorizontalAlignment="Right" Height="40" Margin="0,525.391,109.5,0" TextWrapping="Wrap" Text="Fido" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
-            <Grid x:Name="Add_Dog_Button1" Margin="158.791,538.891,262.101,179"/>
-            <Grid x:Name="RemoveDogButton1" Margin="54,538.891,366.892,179"/>
-            <TextBlock x:Name="DisplayName" HorizontalAlignment="Left" Height="40" Margin="233,160,0,0" TextWrapping="Wrap" Text="John Smith" VerticalAlignment="Top" Width="185" FontSize="24"/>
-            <TextBlock x:Name="DisplayProfile" HorizontalAlignment="Left" Height="125" Margin="58,280,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin eu nibh sit amet suscipit." VerticalAlignment="Top" Width="360" FontSize="24"/>
-            <Grid x:Name="DogPic2" Margin="54,602,318.209,77">
-                <Ellipse Fill="#FF499BFD"/>
-                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
-            </Grid>
-            <TextBox x:Name="DogName2" HorizontalAlignment="Right" Height="40" Margin="0,627.391,109.5,0" TextWrapping="Wrap" Text="Rover" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
-            <Button x:Name="Profile_EditButton" Content="Edit" HorizontalAlignment="Left" Height="60.5" Margin="378.5,94.5,0,0" VerticalAlignment="Top" Width="66" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" Click="Profile_EditButton_Click"/>
         </Grid>
     </Grid>
 </Window>
