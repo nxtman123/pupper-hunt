@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="pupper_hunt.DogProfileControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:pupper_hunt"
+             mc:Ignorable="d" 
+             d:DesignHeight="96.5" d:DesignWidth="360">
+    <Grid>
+        <Grid x:Name="DogProfile" HorizontalAlignment="Left" Height="96.5" Margin="0,0,-360,-96.5" VerticalAlignment="Top" Width="360">
+            <Image x:Name="Image" HorizontalAlignment="Left" Height="93" VerticalAlignment="Top" Width="99"/>
+            <TextBlock x:Name="DogName" HorizontalAlignment="Left" Height="28.5" Margin="104,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" FontSize="24"><Run Text="NAME"/><LineBreak/><Run/></TextBlock>
+            <TextBlock x:Name="DogBreed" HorizontalAlignment="Left" Height="28.5" Margin="220,0,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" FontSize="24" FontWeight="Bold" Foreground="#FFFFD100" TextDecorations="Underline" MouseDown="DogBreed_MouseDown"><Run Text="NAME"/><LineBreak/><Run/></TextBlock>
+            <TextBlock x:Name="DogBio" HorizontalAlignment="Left" Height="59.5" Margin="104,33.5,-4,0" TextWrapping="Wrap" Text="Bio" VerticalAlignment="Top" Width="260" FontSize="16"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

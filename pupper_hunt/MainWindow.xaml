@@ -65,47 +65,28 @@
             <TextBox x:Name="ProfileEdit_UserName" HorizontalAlignment="Right" Height="40" Margin="0,113.5,54,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" BorderBrush="Black" FontSize="24"/>
             <Image x:Name="ProfileEdit_UserImage" HorizontalAlignment="Left" Height="141.5" Margin="58,53,0,0" VerticalAlignment="Top" Width="147.899"/>
             <TextBox x:Name="ProfileEdit_UserBio" HorizontalAlignment="Center" Height="125" Margin="58,236.5,54,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
-            <Grid x:Name="DogPicEdit" Margin="54,440,268,179">
-                <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150"/>
-                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" HorizontalAlignment="Left" Height="76.71" Margin="35.135,24,0,0" Stretch="Fill" VerticalAlignment="Top" Width="88.287"/>
-            </Grid>
-            <TextBox x:Name="DogNameEdit" HorizontalAlignment="Right" Height="40" Margin="0,500,54,0" TextWrapping="Wrap" Text="Dog Name" VerticalAlignment="Top" Width="185" BorderBrush="Black" FontSize="24"/>
-            <TextBox x:Name="DogDescriptionEdit" HorizontalAlignment="Center" Height="125" Margin="58,610,54,0" TextWrapping="Wrap" Text="Dog Description" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
-            <Grid x:Name="Add_Dog_Button" Margin="158.791,538.891,262.101,179">
-                <Ellipse Fill="#FF00A000" HorizontalAlignment="Left" Height="51.109" VerticalAlignment="Top" Width="51.108"/>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="+" VerticalAlignment="Center" FontSize="48" Margin="0,0,0,10" Foreground="White"/>
-            </Grid>
-            <Grid x:Name="RemoveDogButton" Margin="54,538.891,366.892,179">
-                <Ellipse Fill="#FFDC0000" HorizontalAlignment="Left" Height="51.109" VerticalAlignment="Top" Width="51.108"/>
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="−" VerticalAlignment="Center" FontSize="48" Margin="0,0,0,10" Foreground="White"/>
-            </Grid>
             <Button x:Name="SaveProfileButton" Content="Save" HorizontalAlignment="Left" Height="50" Margin="402,25.5,0,0" VerticalAlignment="Top" Width="60" Background="#7900FF5D" BorderBrush="{x:Null}" FontSize="24" Click="SaveProfileButton_Click"/>
             <TextBlock x:Name="ProfileEdit_NameLabel" HorizontalAlignment="Left" Height="37" Margin="233,76.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold"><Run Text="Name"/><LineBreak/><Run/></TextBlock>
-            <TextBlock x:Name="ProfileEdit_NameLabel_Copy" HorizontalAlignment="Left" Height="37" Margin="62,199.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Bio"/>
+            <TextBlock x:Name="ProfileEdit_BioLabel" HorizontalAlignment="Left" Height="37" Margin="62,199.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Bio"/>
+            <TextBlock x:Name="ProfileEdit_DogsLabel" HorizontalAlignment="Left" Height="37" Margin="62,366.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Puppers"/>
         </Grid>
-        <Grid x:Name="ProfileScreen">
-            <Grid x:Name="DogPic1" Margin="54,500,318.209,179">
-                <Ellipse Fill="#FF499BFD"/>
-                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
-            </Grid>
-            <TextBox x:Name="DogName1" HorizontalAlignment="Right" Height="40" Margin="0,525.391,109.5,0" TextWrapping="Wrap" Text="Fido" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
-            <Grid x:Name="Add_Dog_Button1" Margin="158.791,538.891,262.101,179"/>
-            <Grid x:Name="RemoveDogButton1" Margin="54,538.891,366.892,179"/>
+        <Grid x:Name="ProfileScreen" d:IsHidden="True">
             <TextBlock x:Name="Profile_Name" HorizontalAlignment="Left" Height="40" Margin="233,224.5,0,0" TextWrapping="Wrap" Text="John Smith" VerticalAlignment="Top" Width="185" FontSize="24" Background="#190000DC"/>
             <TextBlock x:Name="Profile_Bio" HorizontalAlignment="Left" Height="125" Margin="58,298.5,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin eu nibh sit amet suscipit." VerticalAlignment="Top" Width="360" FontSize="24" Background="#190000DC"/>
-            <Grid x:Name="DogPic2" Margin="54,602,318.209,77">
-                <Ellipse Fill="#FF499BFD"/>
-                <Path Data="M57.49962,37.999994 L51,61.5 C51,61.5 37.99987,87.499917 54.49987,91.999917 70.99987,96.499917 109.50044,86.999735 109.50044,86.999735 109.50044,86.999735 125.14826,82.198442 113.78401,75.575871 102.49983,68.999967 70.783247,60.075885 70.783247,60.075885 z" Fill="White" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
-            </Grid>
-            <TextBox x:Name="DogName2" HorizontalAlignment="Right" Height="40" Margin="0,627.391,109.5,0" TextWrapping="Wrap" Text="Rover" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" FontSize="24"/>
             <Button x:Name="Profile_EditButton" Content="" HorizontalAlignment="Left" Height="60.5" Margin="396,94.5,0,0" VerticalAlignment="Top" Width="66" BorderBrush="{x:Null}" FontSize="24" Click="Profile_EditButton_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="edit.png"/>
                 </Button.Background>
             </Button>
-            <Image x:Name="Profile_Image" HorizontalAlignment="Left" Height="170" Margin="54,94.5,0,0" VerticalAlignment="Top" Width="155.399" RenderTransformOrigin="0.56,0.291"/>
-            <TextBlock HorizontalAlignment="Left" Height="29" Margin="233,190.5,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
-            <TextBlock HorizontalAlignment="Left" Height="29" Margin="58,264.5,0,0" TextWrapping="Wrap" Text="About" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
+            <Image x:Name="Profile_Image" HorizontalAlignment="Left" Height="170" Margin="54,94.5,0,0" VerticalAlignment="Top" Width="155.399" RenderTransformOrigin="0.56,0.291" Stretch="Fill"/>
+            <TextBlock x:Name="Profile_NameLabel" HorizontalAlignment="Left" Height="29" Margin="233,190.5,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="Profile_AboutLabel" HorizontalAlignment="Left" Height="29" Margin="58,264.5,0,0" TextWrapping="Wrap" Text="About" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="Profile_DogsLabel" HorizontalAlignment="Left" Height="29" Margin="58,430.5,0,0" TextWrapping="Wrap" Text="Puppers" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
+            <Grid x:Name="Profile_DogsList" HorizontalAlignment="Left" Height="299.5" Margin="10,459.5,0,0" VerticalAlignment="Top" Width="452">
+                <local:DogProfileControl x:Name="Profile_Dog1" Margin="48,0,44,203"/>
+                <local:DogProfileControl x:Name="Profile_Dog2" Margin="48,96.5,44,106.5"/>
+                <local:DogProfileControl x:Name="Profile_Dog3" Margin="48,198,44,5"/>
+            </Grid>
         </Grid>
         <Grid x:Name="DogInformationScreen" d:IsHidden="True">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
@@ -197,7 +178,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Katie's Cafe is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
             </Grid>
         </Grid>
-        <Grid x:Name="SearchScreen" d:IsHidden="True">
+        <Grid x:Name="SearchScreen">
             <TextBox x:Name="SearchBox" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
             <Grid x:Name="DoSearchButton" Margin="402.75,112.75,36,623">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
@@ -213,6 +194,7 @@
                     <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 5 hours at Nose Hill Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
                 </Grid>
             </Grid>
+            <Button x:Name="SearchScreen_CreateEventButton" Content="Create Event&#xD;&#xA;" HorizontalAlignment="Left" Height="59.628" Margin="106.311,479.832,0,0" VerticalAlignment="Top" Width="251.428" Click="CreateEvent"/>
         </Grid>
         <Grid x:Name="HelpScreen" d:IsHidden="True">
             <TextBox x:Name="SearchBox1" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="What do you need help with?" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
@@ -267,6 +249,29 @@
                     <Path Data="M14.375,40.25 L35,21 34.875,59.375 z" Fill="White" HorizontalAlignment="Left" Height="38.375" Margin="0,16.646" Stretch="Fill" VerticalAlignment="Center" Width="25.625" IsHitTestVisible="True"/>
                 </Grid>
             </Button>
+        </Grid>
+        <Grid x:Name="CreateEventScreen" d:IsHidden="True">
+            <Image x:Name="CreateEvent_Image" HorizontalAlignment="Left" Height="172.919" Margin="0,81.323,0,0" VerticalAlignment="Top" Width="472" Source="event.jpg" Stretch="Fill"/>
+            <TextBlock x:Name="CreateEvent_NameLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,299.987,0,0" TextWrapping="Wrap" Text="Event Name:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <TextBox x:Name="CreateEvent_NameInput" HorizontalAlignment="Left" Height="33.819" Margin="161.031,301.944,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="300.969" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
+            <TextBlock x:Name="CreateEvent_LocationLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,347.719,0,0" TextWrapping="Wrap" Text="Location:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <TextBox x:Name="CreateEvent_LocationInput" HorizontalAlignment="Left" Height="33.819" Margin="161.031,349.676,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="300.969" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
+            <DatePicker x:Name="CreateEvent_DayPicker" HorizontalAlignment="Left" Height="36.679" Margin="161.031,388.495,0,0" VerticalAlignment="Top" Width="300.969" FontSize="18"/>
+            <TextBlock x:Name="CreateEvent_DayLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,389.398,0,0" TextWrapping="Wrap" Text="Day:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="CreateEvent_TimeLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,430.174,0,0" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <ComboBox x:Name="CreateEvent_TimePicker" HorizontalAlignment="Left" Height="35.776" Margin="161.031,430.174,0,0" VerticalAlignment="Top" Width="300.969" SelectedIndex="0" BorderBrush="#FFCADFFF">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFCADFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <TextBlock x:Name="CreateEvent_DescriptionLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,470.95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"><Run Text="Description:"/><LineBreak/><Run/></TextBlock>
+            <TextBox x:Name="CreateEvent_DescriptionInput" HorizontalAlignment="Left" Height="163.217" Margin="10,505.764,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="452" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
+            <Button x:Name="CreateEvent_CreateButton" Content="Create!" HorizontalAlignment="Left" Height="69.478" Margin="253.391,689.522,0,0" VerticalAlignment="Top" Width="208.609" BorderBrush="#FFCADFFF" Background="#FF94FF99" FontSize="24" FontWeight="Bold" Click="CreateEvent_CreateButton_Click"/>
+            <Button x:Name="CreateEvent_CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="69.478" Margin="10,689.522,0,0" VerticalAlignment="Top" Width="207.615" BorderBrush="#FFCADFFF" Background="#FFFFE4E4" FontSize="24" FontWeight="Bold" Click="CreateEvent_CancelButton_Click"/>
+            <TextBlock x:Name="CreateEvent_WarningBanner" HorizontalAlignment="Left" TextAlignment="Center" Height="35.745" Margin="0,259.242,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="472" FontWeight="Bold" FontSize="22" Foreground="Red" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

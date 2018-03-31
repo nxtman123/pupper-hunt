@@ -59,10 +59,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DogProfileControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Account.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -71,6 +76,10 @@
     <Compile Include="BackButtonControl.xaml.cs">
       <DependentUpon>BackButtonControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DogProfileControl.xaml.cs">
+      <DependentUpon>DogProfileControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs" />
     <Compile Include="ImageManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -139,6 +148,26 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="event.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="res\event1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\event2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\event3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\event4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\event5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
