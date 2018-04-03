@@ -29,6 +29,20 @@ namespace pupper_hunt
         public MainWindow()
         {
             InitializeComponent();
+
+            mAccountManager = new AccountManager();
+            DogOwnerAccount account = mAccountManager.AddAccount("john", "smith", Account.Type.DogOwner) as DogOwnerAccount;
+            account.AddDog();
+            account.AddDog();
+            mCurrentAccount = null;
+            mInstance = this;
+
+            mGridStack = new Stack<Grid>();
+            mGridStack.Push(WelcomeScreen);
+
+            // Starting Screen
+            WelcomeScreen.Visibility = Visibility.Visible;
+
             LoginScreen.Visibility = Visibility.Hidden;
             CreateAccountScreen.Visibility = Visibility.Hidden;
             CreateEventScreen.Visibility = Visibility.Hidden;
@@ -38,23 +52,10 @@ namespace pupper_hunt
             DogInformationScreen.Visibility = Visibility.Hidden;
             BusinessProfileScreen.Visibility = Visibility.Hidden;
             NewsFeedScreen.Visibility = Visibility.Hidden;
-            SearchScreen.Visibility = Visibility.Hidden;
+            EventsScreen.Visibility = Visibility.Hidden;
             HelpScreen.Visibility = Visibility.Hidden;
             Ribbon.Visibility = Visibility.Hidden;
-
-            mAccountManager = new AccountManager();
-            DogOwnerAccount account = mAccountManager.AddAccount("john", "smith", Account.Type.DogOwner) as DogOwnerAccount;
-            account.AddDog();
-            account.AddDog();
-            mCurrentAccount = null;
-
-            // Starting Screen
-            WelcomeScreen.Visibility = Visibility.Visible;
-
-            mGridStack = new Stack<Grid>();
-            mGridStack.Push(WelcomeScreen);
-
-            mInstance = this;
+            RefreshRibbonButtons();
         }
 
         public static MainWindow Instance()
@@ -148,6 +149,7 @@ namespace pupper_hunt
                 Ribbon.Visibility = Visibility.Visible;
                 NewsFeedScreen.Visibility = Visibility.Visible;
                 mGridStack.Push(NewsFeedScreen);
+                RefreshRibbonButtons();
             }
             else if (result == AccountManager.LoginResult.IncorrectPassword)
             {
@@ -161,44 +163,29 @@ namespace pupper_hunt
         #endregion
 
         #region Ribbon
-        private void Ribbon_BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            mGridStack.Peek().Visibility = Visibility.Hidden;
-            mGridStack.Pop();
-            if (mGridStack.Count > 0)
-            {
-                mGridStack.Peek().Visibility = Visibility.Visible;
-            }
-            else
-            {
-                // back at login screen. Hide Ribbon
-                Ribbon.Visibility = Visibility.Hidden;
-                WelcomeScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(WelcomeScreen);
-            }
-        }
-
-        private void Ribbon_FeedButton_Click(object sender, RoutedEventArgs e)
+        private void Ribbon_NewsFeedButton_Click(object sender, MouseButtonEventArgs e)
         {
             if (mGridStack.Peek() != NewsFeedScreen)
             {
                 mGridStack.Peek().Visibility = Visibility.Hidden;
                 NewsFeedScreen.Visibility = Visibility.Visible;
                 mGridStack.Push(NewsFeedScreen);
+                RefreshRibbonButtons();
             }
         }
 
-        private void Ribbon_SearchButton_Click(object sender, RoutedEventArgs e)
+        private void Ribbon_EventsButton_Click(object sender, MouseButtonEventArgs e)
         {
-            if (mGridStack.Peek() != SearchScreen)
+            if (mGridStack.Peek() != EventsScreen)
             {
                 mGridStack.Peek().Visibility = Visibility.Hidden;
-                SearchScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(SearchScreen);
+                EventsScreen.Visibility = Visibility.Visible;
+                mGridStack.Push(EventsScreen);
+                RefreshRibbonButtons();
             }
         }
 
-        private void Ribbon_ProfileButton_Click(object sender, RoutedEventArgs e)
+        private void Ribbon_ProfileButton_Click(object sender, MouseButtonEventArgs e)
         {
             if (mGridStack.Peek() != ProfileEditScreen)
             {
@@ -206,23 +193,27 @@ namespace pupper_hunt
                 mGridStack.Peek().Visibility = Visibility.Hidden;
                 ProfileScreen.Visibility = Visibility.Visible;
                 mGridStack.Push(ProfileScreen);
+                RefreshRibbonButtons();
             }
         }
 
-        private void Ribbon_HelpButton_Click(object sender, RoutedEventArgs e)
+        private void Ribbon_DogInfoButton_Click(object sender, MouseButtonEventArgs e)
         {
             if (mGridStack.Peek() != HelpScreen)
             {
                 mGridStack.Peek().Visibility = Visibility.Hidden;
-                HelpScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(HelpScreen);
+                DogInformationScreen.Visibility = Visibility.Visible;
+                mGridStack.Push(DogInformationScreen);
+                RefreshRibbonButtons();
             }
         }
 
-
         private void RefreshRibbonButtons()
         {
-            // do stuff about making the buttons clickable
+            Ribbon_NewsFeedIcon_Mask.Visibility = mGridStack.Peek() == NewsFeedScreen ? Visibility.Hidden : Visibility.Visible;
+            Ribbon_EventsIcon_Mask.Visibility = mGridStack.Peek() == EventsScreen ? Visibility.Hidden : Visibility.Visible;
+            Ribbon_ProfileIcon_Mask.Visibility = mGridStack.Peek() == ProfileScreen ? Visibility.Hidden : Visibility.Visible;
+            Ribbon_DogInfoIcon_Mask.Visibility = mGridStack.Peek() == DogInformationScreen ? Visibility.Hidden : Visibility.Visible;
         }
 
         #endregion
@@ -418,5 +409,7 @@ namespace pupper_hunt
             mGridStack.Push(CreateEventScreen);
             
         }
+
+
     }
 }

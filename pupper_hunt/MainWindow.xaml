@@ -88,7 +88,7 @@
                 <local:DogProfileControl x:Name="Profile_Dog3" Margin="48,198,44,5"/>
             </Grid>
         </Grid>
-        <Grid x:Name="DogInformationScreen" d:IsHidden="True">
+        <Grid x:Name="DogInformationScreen">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
             <Grid x:Name="BreedPic" Margin="66.2,147.7,65.8,281.3">
                 <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="340" VerticalAlignment="Center" Width="340"/>
@@ -178,7 +178,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Katie's Cafe is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
             </Grid>
         </Grid>
-        <Grid x:Name="SearchScreen">
+        <Grid x:Name="EventsScreen" d:IsHidden="True">
             <TextBox x:Name="SearchBox" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
             <Grid x:Name="DoSearchButton" Margin="402.75,112.75,36,623">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
@@ -213,42 +213,15 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid x:Name="Ribbon" Margin="0,0,0,687">
-            <Rectangle Fill="#FF499BFD"/>
-            <Button x:Name="Ribbon_FeedButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="#00000000" Click="Ribbon_FeedButton_Click" BorderBrush="{x:Null}" Margin="89,0,0,0">
-                <Grid x:Name="FeedIcon" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="65">
-                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" IsEnabled="False" IsHitTestVisible="False"/>
-                    <Rectangle Fill="#FF4F4F4F" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="65" IsEnabled="False" IsHitTestVisible="False"/>
-                    <Ellipse Fill="White" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Margin="5,5,0,0" IsEnabled="False" IsHitTestVisible="False"/>
-                    <Rectangle Fill="White" HorizontalAlignment="Right" Height="10" VerticalAlignment="Top" Width="30" Margin="0,10,5,0" IsEnabled="False" IsHitTestVisible="False"/>
-                </Grid>
-            </Button>
-            <Button x:Name="Ribbon_SearchButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Height="82" Background="{x:Null}" Click="Ribbon_SearchButton_Click" BorderBrush="{x:Null}" Margin="184,0,0,0">
-                <Grid x:Name="SearchIcon" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="65">
-                    <Rectangle Fill="#FF4F4F4F" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="40"/>
-                    <Ellipse Fill="White" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="30"/>
-                    <Path Data="M268,68.5 L235.5,40.5" HorizontalAlignment="Right" Height="30" Margin="0" Stretch="Fill" VerticalAlignment="Bottom" Width="30" Stroke="White" StrokeThickness="6"/>
-                </Grid>
-            </Button>
-            <Button x:Name="Ribbon_ProfileButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="{x:Null}" Click="Ribbon_ProfileButton_Click" BorderBrush="{x:Null}" Margin="283,0,0,0">
-                <Grid x:Name="ProfileIcon" Margin="0" Width="75" Height="75">
-                    <Ellipse Fill="White" HorizontalAlignment="Center" Height="65" VerticalAlignment="Center" Width="65"/>
-                    <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="36" Margin="0,10,0,0" VerticalAlignment="Top" Width="30"/>
-                    <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="35" Margin="0,50,0,0" VerticalAlignment="Top" Width="45"/>
-                </Grid>
-            </Button>
-            <Button x:Name="Ribbon_HelpButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="{x:Null}" Click="Ribbon_HelpButton_Click" BorderBrush="{x:Null}" Margin="378,0,0,0">
-                <Grid x:Name="HelpIcon" Width="65" Height="65">
-                    <Ellipse Fill="White"/>
-                    <TextBlock TextWrapping="Wrap" Text="?" FontSize="72" Margin="0,3,0,0" Foreground="#FF499BFD" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial"/>
-                </Grid>
-            </Button>
-            <Button x:Name="Ribbon_BackButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Height="82" Background="{x:Null}" Click="Ribbon_BackButton_Click" BorderBrush="{x:Null}">
-                <Grid x:Name="BackIcon" Height="71.667" Width="84" IsHitTestVisible="True">
-                    <Rectangle Fill="White" HorizontalAlignment="Right" Height="15" VerticalAlignment="Center" Width="58.375" IsHitTestVisible="True" Margin="0,28.334,0,28.333"/>
-                    <Path Data="M14.375,40.25 L35,21 34.875,59.375 z" Fill="White" HorizontalAlignment="Left" Height="38.375" Margin="0,16.646" Stretch="Fill" VerticalAlignment="Center" Width="25.625" IsHitTestVisible="True"/>
-                </Grid>
-            </Button>
+        <Grid x:Name="Ribbon" Margin="0,0,0,687" Background="#000000F9">
+            <Rectangle x:Name="Ribbon_NewsFeedIcon_Mask" Fill="#26000000" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="118"/>
+            <Rectangle x:Name="Ribbon_EventsIcon_Mask" Fill="#26000000" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="118" Margin="118,0,0,0"/>
+            <Rectangle x:Name="Ribbon_ProfileIcon_Mask" Fill="#26000000" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="118" Margin="236,0,0,0"/>
+            <Rectangle x:Name="Ribbon_DogInfoIcon_Mask" Fill="#26000000" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="118" Margin="354,0,0,0"/>
+            <Image x:Name="Ribbon_NewsFeedIcon" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="98" Source="ribbon_newsFeed.png" OpacityMask="Black" Stretch="Fill" Margin="10,5,4,0" MouseDown="Ribbon_NewsFeedButton_Click"/>
+            <Image x:Name="Ribbon_EventsIcon" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="98" Margin="128,5,0,0" Source="ribbon_events.png" OpacityMask="White" Stretch="Fill" MouseDown="Ribbon_EventsButton_Click"/>
+            <Image x:Name="Ribbon_ProfileIcon" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="98" Margin="246,5,0,0" Source="ribbon_profile.png" Stretch="Fill" MouseDown="Ribbon_ProfileButton_Click"/>
+            <Image x:Name="Ribbon_DogInfoIcon" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="98" Margin="364,5,0,0" Source="ribbon_dogInfo.png" Stretch="Fill" MouseDown="Ribbon_DogInfoButton_Click"/>
         </Grid>
         <Grid x:Name="CreateEventScreen" d:IsHidden="True">
             <Image x:Name="CreateEvent_Image" HorizontalAlignment="Left" Height="172.919" Margin="0,81.323,0,0" VerticalAlignment="Top" Width="472" Source="event.jpg" Stretch="Fill"/>

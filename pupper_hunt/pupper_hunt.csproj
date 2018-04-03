@@ -169,5 +169,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ribbon_events.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ribbon_newsFeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ribbon_profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ribbon_dogInfo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
