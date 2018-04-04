@@ -24,18 +24,21 @@ namespace pupper_hunt
         private Stack<Grid> mGridStack;
         private AccountManager mAccountManager;
         private Account mCurrentAccount;
+        private List<Event> mNearbyEvents;
+
         private static MainWindow mInstance;
 
         public MainWindow()
         {
             InitializeComponent();
+            mInstance = this;
 
             mAccountManager = new AccountManager();
-            DogOwnerAccount account = mAccountManager.AddAccount("john", "smith", Account.Type.DogOwner) as DogOwnerAccount;
-            account.AddDog();
-            account.AddDog();
+            Account johnSmith = CreateFakeAccount();
             mCurrentAccount = null;
-            mInstance = this;
+
+            mNearbyEvents = new List<Event>();
+            CreateNearbyEvents();
 
             mGridStack = new Stack<Grid>();
             mGridStack.Push(WelcomeScreen);
@@ -54,8 +57,18 @@ namespace pupper_hunt
             NewsFeedScreen.Visibility = Visibility.Hidden;
             EventsScreen.Visibility = Visibility.Hidden;
             HelpScreen.Visibility = Visibility.Hidden;
+            EventInfoScreen.Visibility = Visibility.Hidden;
             Ribbon.Visibility = Visibility.Hidden;
             RefreshRibbonButtons();
+
+            Account lacy = mAccountManager.AddAccount("Lacy loo who", "nope", Account.Type.DogOwner);
+            Account boo = mAccountManager.AddAccount("Boo", "Ahhh", Account.Type.DogOwner);
+            Account peep = mAccountManager.AddAccount("Peep a Sheep", "sheep", Account.Type.DogOwner);
+
+            Event testEvent = new Event(lacy, ImageManager.GetImageSource("event1"), "Lets go to the park!", "PARK", "DID I SAY PARK?!", DateTime.Now);
+            boo.AttendEvent(testEvent);
+            peep.AttendEvent(testEvent);
+            TestEvent.Initialize(testEvent);
         }
 
         public static MainWindow Instance()
@@ -130,9 +143,7 @@ namespace pupper_hunt
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            mGridStack.Peek().Visibility = Visibility.Hidden;
-            LoginScreen.Visibility = Visibility.Visible;
-            mGridStack.Push(LoginScreen);
+            GoToScreen(LoginScreen);
         }
 
 
@@ -147,9 +158,7 @@ namespace pupper_hunt
                 mGridStack.Peek().Visibility = Visibility.Hidden;
                 mGridStack.Clear();
                 Ribbon.Visibility = Visibility.Visible;
-                NewsFeedScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(NewsFeedScreen);
-                RefreshRibbonButtons();
+                GoToScreen(NewsFeedScreen);
             }
             else if (result == AccountManager.LoginResult.IncorrectPassword)
             {
@@ -167,10 +176,7 @@ namespace pupper_hunt
         {
             if (mGridStack.Peek() != NewsFeedScreen)
             {
-                mGridStack.Peek().Visibility = Visibility.Hidden;
-                NewsFeedScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(NewsFeedScreen);
-                RefreshRibbonButtons();
+                GoToScreen(NewsFeedScreen);
             }
         }
 
@@ -178,10 +184,7 @@ namespace pupper_hunt
         {
             if (mGridStack.Peek() != EventsScreen)
             {
-                mGridStack.Peek().Visibility = Visibility.Hidden;
-                EventsScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(EventsScreen);
-                RefreshRibbonButtons();
+                GoToScreen(EventsScreen);
             }
         }
 
@@ -190,10 +193,7 @@ namespace pupper_hunt
             if (mGridStack.Peek() != ProfileEditScreen)
             {
                 PopulateProfileScreen();
-                mGridStack.Peek().Visibility = Visibility.Hidden;
-                ProfileScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(ProfileScreen);
-                RefreshRibbonButtons();
+                GoToScreen(ProfileScreen);
             }
         }
 
@@ -201,10 +201,7 @@ namespace pupper_hunt
         {
             if (mGridStack.Peek() != HelpScreen)
             {
-                mGridStack.Peek().Visibility = Visibility.Hidden;
-                DogInformationScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(DogInformationScreen);
-                RefreshRibbonButtons();
+                GoToScreen(DogInformationScreen);
             }
         }
 
@@ -287,32 +284,12 @@ namespace pupper_hunt
 
         #endregion
 
-        private void Back(object sender, MouseButtonEventArgs e)
-        {
-            mGridStack.Peek().Visibility = Visibility.Hidden;
-            mGridStack.Pop();
-            if (mGridStack.Count > 0)
-            {
-                mGridStack.Peek().Visibility = Visibility.Visible;
-            }
-            else
-            {
-                // back at login screen. Hide Ribbon
-                Ribbon.Visibility = Visibility.Hidden;
-                WelcomeScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(WelcomeScreen);
-            }
-        }
-
         public void NavigateToDogScreen(object sender, MouseButtonEventArgs e)
         {
             TextBlock tb = sender as TextBlock;
             if (tb != null)
             {
                 string content = tb.Text;
-                mGridStack.Peek().Visibility = Visibility.Hidden;
-                DogInformationScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(DogInformationScreen);
 
                 DogProfile.DogBreed breedToShow = DogProfile.DogBreed.Corgi;
                 if (content.Equals(DogProfile.DogBreed.Corgi.ToString()))
@@ -328,6 +305,7 @@ namespace pupper_hunt
                     breedToShow = DogProfile.DogBreed.Lab;
                 }
                 PopulateDogInformationScreen(breedToShow);
+                GoToScreen(DogInformationScreen);
             }
         }
 
@@ -336,14 +314,41 @@ namespace pupper_hunt
 
         }
 
-        private void PopulateCreateEventScreen()
+        public void NavigateToEventScreen(Event e)
         {
-            CreateEvent_Image.Source = Event.GetNextEventImage(); // Each time an event is created it increments a count and returns the next event image we have
+            Ribbon.Visibility = Visibility.Hidden;
+            PopulateEventInfoScreen(e);
+            GoToScreen(EventInfoScreen);
+        }
+
+
+        private void PopulateEventInfoScreen(Event toShow)
+        {
+            EventInfoScreen.Tag = toShow.Id;
+            EventInfo_Image.Source = toShow.EventImageSource;
+            EventInfo_Day.Text = toShow.EventTime.Day.ToString();
+            EventInfo_Month.Text = Event.IntToMonth(toShow.EventTime.Day);
+            EventInfo_HostName.Text = toShow.EventCreator.AccountName;
+            EventInfo_Info.Text = toShow.EventDescription;
+            EventInfo_AttendanceList.Items.Clear();
+            foreach (Account attendee in toShow.EventAttendees)
+            {
+                EventInfo_AttendanceList.Items.Add(new TextBlock() { Text = attendee.AccountName });
+            }
+
+            EventInfo_Attend.Visibility = toShow.EventCreator == mCurrentAccount ? Visibility.Hidden : Visibility.Visible;
+            EventInfo_Attend.Content = toShow.IsAttending(mCurrentAccount) ? "Cancel" : "Attend!";
+            EventInfo_EditButton.Visibility = toShow.EventCreator == mCurrentAccount ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void PopulateCreateEventScreen(Event e = null)
+        {
+            CreateEvent_Image.Source = e == null ? Event.GetNextEventImage() : e.EventImageSource; // Each time an event is created it increments a count and returns the next event image we have
             CreateEvent_WarningBanner.Visibility = Visibility.Hidden;
-            CreateEvent_NameInput.Text = "";
-            CreateEvent_LocationInput.Text = "";
-            CreateEvent_DescriptionInput.Text = "";
-            CreateEvent_DayPicker.SelectedDate = DateTime.Now;
+            CreateEvent_NameInput.Text = e == null ? "" : e.EventName;
+            CreateEvent_LocationInput.Text = e == null ? "" : e.EventLocation;
+            CreateEvent_DescriptionInput.Text = e == null ? "" : e.EventDescription;
+            CreateEvent_DayPicker.SelectedDate = e == null ? DateTime.Now : e.EventTime;
             if (!CreateEvent_TimePicker.HasItems)
             {
                 for (int i = 0; i < 24; ++i)
@@ -359,7 +364,8 @@ namespace pupper_hunt
                     CreateEvent_TimePicker.Items.Add(hour.ToString() + ":30" + " " + (isPM ? "PM" : "AM"));
                 }
             }
-            CreateEvent_TimePicker.SelectedIndex = DateTime.Now.Hour * 2;
+            CreateEvent_TimePicker.SelectedIndex = e == null ? DateTime.Now.Hour * 2 : e.EventTime.Hour * 2;
+            CreateEventScreen.Tag = e == null ? -1 : e.Id;
         }
 
         private void CreateEvent_CreateButton_Click(object sender, RoutedEventArgs e)
@@ -382,10 +388,20 @@ namespace pupper_hunt
 
             if (warningTag.Equals("")) // entered out all information
             {
-                mCurrentAccount.HostEvent(CreateEvent_Image.Source, CreateEvent_NameInput.Text, CreateEvent_DescriptionInput.Text, CreateEvent_LocationInput.Text, selectedDate.Value);
-                CreateEventScreen.Visibility = Visibility.Hidden;
-                mGridStack.Pop();
-                mGridStack.Peek().Visibility = Visibility.Visible;
+                if ((int)CreateEventScreen.Tag == -1) // created a new event
+                {
+                    mCurrentAccount.HostEvent(CreateEvent_Image.Source, CreateEvent_NameInput.Text, CreateEvent_DescriptionInput.Text, CreateEvent_LocationInput.Text, selectedDate.Value);
+                    GoBack();
+                }
+                else // edited an event
+                {
+                    Event toUpdate = Event.GetEvent((int)CreateEventScreen.Tag);
+                    toUpdate.Update(CreateEvent_NameInput.Text, CreateEvent_DescriptionInput.Text, CreateEvent_LocationInput.Text, selectedDate.Value);
+                    mGridStack.Pop().Visibility = Visibility.Hidden;
+                    PopulateCreateEventScreen(toUpdate); 
+                    mGridStack.Peek().Visibility = Visibility.Visible; // go back to the eventinfo screen
+                }
+
             }
             else
             {
@@ -396,20 +412,84 @@ namespace pupper_hunt
 
         private void CreateEvent_CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateEventScreen.Visibility = Visibility.Hidden;
-            mGridStack.Pop();
-            mGridStack.Peek().Visibility = Visibility.Visible;
+            GoBack();
         }
 
         private void CreateEvent(object sender, RoutedEventArgs e)
         {
             PopulateCreateEventScreen();
-            CreateEventScreen.Visibility = Visibility.Visible;
-            mGridStack.Peek().Visibility = Visibility.Hidden;
-            mGridStack.Push(CreateEventScreen);
-            
+            GoToScreen(CreateEventScreen);
         }
 
+        private void CreateNearbyEvents()
+        {
+            // make events
+        }
 
+        private DogOwnerAccount CreateFakeAccount()
+        {
+            DogOwnerAccount account = mAccountManager.AddAccount("john", "smith", Account.Type.DogOwner) as DogOwnerAccount;
+            account.AddDog();
+            account.AddDog();
+            return account;
+        }
+
+        private void GoToScreen(Grid screen, bool refreshRibbon = true)
+        {
+            if (mGridStack.Count > 0)
+            {
+                mGridStack.Peek().Visibility = Visibility.Hidden;
+            }
+            mGridStack.Push(screen);
+            screen.Visibility = Visibility.Visible;
+            if (refreshRibbon)
+            {
+                RefreshRibbonButtons();
+            }
+        }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            GoBack();
+        }
+
+        private void GoBack()
+        {
+            mGridStack.Pop().Visibility = Visibility.Hidden;
+            if (mGridStack.Count > 0)
+            {
+                Ribbon.Visibility = Visibility.Visible; // Back is only ever called from info screens so returning screen will have ribbon
+                mGridStack.Peek().Visibility = Visibility.Visible;
+            }
+            else
+            {
+                // back at login screen. Hide Ribbon
+                Ribbon.Visibility = Visibility.Hidden;
+                WelcomeScreen.Visibility = Visibility.Visible;
+                mGridStack.Push(WelcomeScreen);
+            }
+        }
+
+        private void EventInfo_EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            PopulateCreateEventScreen(Event.GetEvent((int)EventInfoScreen.Tag));
+            GoToScreen(CreateEventScreen);
+        }
+
+        private void EventInfo_AttendToggle_Click(object sender, RoutedEventArgs e)
+        {
+            Event attending = Event.GetEvent((int)EventInfoScreen.Tag);
+            if (attending.IsAttending(mCurrentAccount))
+            {
+                mCurrentAccount.RetractAttendance(attending);
+                EventInfo_Attend.Content = "Attend!";       
+            }
+            else
+            {
+                mCurrentAccount.AttendEvent(attending);
+                EventInfo_Attend.Content = "Cancel";
+            }
+            PopulateEventInfoScreen(attending);
+        }
     }
 }

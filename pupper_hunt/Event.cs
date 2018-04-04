@@ -10,7 +10,9 @@ namespace pupper_hunt
     public class Event
     {
         private static readonly uint NUM_EVENT_PICTURES = 5;
-        private static uint NumEventsCreated = 0;
+        private static List<Event> CreatedEvents = new List<Event>();
+
+        public int Id { get; private set; }
         public Account EventCreator { get; private set; }
         public ImageSource EventImageSource { get; private set; }
         public string EventName { get; private set; }
@@ -21,6 +23,8 @@ namespace pupper_hunt
 
         public Event(Account creator, ImageSource source, string name, string description, string location, DateTime time)
         {
+            Id = CreatedEvents.Count;
+            CreatedEvents.Add(this);
             EventCreator = creator;
             EventImageSource = source;
             EventName = name;
@@ -28,12 +32,22 @@ namespace pupper_hunt
             EventLocation = location;
             EventTime = time;
             EventAttendees = new HashSet<Account>();
-            NumEventsCreated++;
+        }
+
+        public static string IntToMonth(int monthNumber)
+        {
+            string[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            return months[monthNumber];
+        }
+
+        public static Event GetEvent(int index)
+        {
+            return CreatedEvents[index];
         }
 
         public static ImageSource GetNextEventImage()
         {
-            return ImageManager.GetImageSource("event" + ((NumEventsCreated % NUM_EVENT_PICTURES) + 1).ToString());
+            return ImageManager.GetImageSource("event" + ((CreatedEvents.Count % NUM_EVENT_PICTURES) + 1).ToString());
         }
 
         public void Attend(Account attendee)
@@ -61,6 +75,14 @@ namespace pupper_hunt
                 attendee.RetractAttendance(this);
             }
             EventAttendees.Clear();
+        }
+
+        public void Update(string name, string description, string location, DateTime time)
+        {
+            EventName = name;
+            EventDescription = description;
+            EventLocation = location;
+            EventTime = time;
         }
     }
 }

@@ -46,7 +46,7 @@
             </Button>
         </Grid>
         <Grid x:Name="CreateAccountScreen" d:IsHidden="True">
-            <Image x:Name="AccountBack" HorizontalAlignment="Left" Height="48" Margin="10,72,0,0" VerticalAlignment="Top" Width="58" MouseDown="Back" Source="back.png"/>
+            <Image x:Name="AccountBack" HorizontalAlignment="Left" Height="48" Margin="10,72,0,0" VerticalAlignment="Top" Width="58" MouseDown="GoBack" Source="back.png"/>
             <TextBlock x:Name="AccountBanner" HorizontalAlignment="Center" Height="48" Margin="68,72,44,0" TextWrapping="Wrap" Text="Account Details" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
             <TextBox x:Name="AccountUsernameField" HorizontalAlignment="Center" Height="54" Margin="68,281.5,44,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
             <TextBlock x:Name="AccountUsernameLabel" HorizontalAlignment="Left" Height="38.5" Margin="68,243,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
@@ -88,7 +88,7 @@
                 <local:DogProfileControl x:Name="Profile_Dog3" Margin="48,198,44,5"/>
             </Grid>
         </Grid>
-        <Grid x:Name="DogInformationScreen">
+        <Grid x:Name="DogInformationScreen" d:IsHidden="True">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
             <Grid x:Name="BreedPic" Margin="66.2,147.7,65.8,281.3">
                 <Ellipse Fill="#FF499BFD" HorizontalAlignment="Center" Height="340" VerticalAlignment="Center" Width="340"/>
@@ -179,22 +179,21 @@
             </Grid>
         </Grid>
         <Grid x:Name="EventsScreen" d:IsHidden="True">
-            <TextBox x:Name="SearchBox" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
-            <Grid x:Name="DoSearchButton" Margin="402.75,112.75,36,623">
+            <TextBox x:Name="SearchBox" HorizontalAlignment="Center" Height="36" Margin="36,612.5,88.5,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
+            <Grid x:Name="DoSearchButton" Margin="336.75,615.25,102,120.5" RenderTransformOrigin="0.173,6.489">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
                 <Path Data="M453.25,141.25 L438.5,127.25" HorizontalAlignment="Left" Height="17" Margin="15.5,16.25,0,0" Stretch="Fill" Stroke="Black" StrokeThickness="3" VerticalAlignment="Top" Width="17.75"/>
             </Grid>
-            <Grid x:Name="SearchResults" Margin="36,180,36,405">
-                <Grid x:Name="SearchResult0" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
-                    <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 2 hours at Curburn Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
-                </Grid>
-                <Grid x:Name="SearchResult1" Margin="0,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
-                    <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 5 hours at Nose Hill Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
-                </Grid>
-            </Grid>
             <Button x:Name="SearchScreen_CreateEventButton" Content="Create Event&#xD;&#xA;" HorizontalAlignment="Left" Height="59.628" Margin="106.311,479.832,0,0" VerticalAlignment="Top" Width="251.428" Click="CreateEvent"/>
+            <Grid x:Name="EventsScreen_Ribbon" Height="57.5" Margin="0,81,0,0" VerticalAlignment="Top">
+                <Rectangle x:Name="EventsScreen_Ribbon_Nearby_Mask" StrokeThickness="3" Margin="0,0,314.667,0" Fill="#FFDADADA" Stroke="#FFDADADA"/>
+                <Rectangle x:Name="EventsScreen_Ribbon_Attending_Mask" StrokeThickness="3" Margin="157.332,0,157.334,0" Width="157.333333333333" Fill="#FFDADADA" Stroke="#FFDADADA"/>
+                <Rectangle x:Name="EventsScreen_Ribbon_Hosting_Mask" StrokeThickness="3" Margin="314.665,0,0.001,0" Width="157.333333333333" Fill="#FFDADADA" Stroke="#FFDADADA"/>
+                <TextBlock x:Name="EventsScreen_Ribbon_Nearby" TextAlignment="Center" HorizontalAlignment="Left" Height="34.5" TextWrapping="Wrap" VerticalAlignment="Top" Width="157.333" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"><Run Text="Near By"/></TextBlock>
+                <TextBlock x:Name="EventsScreen_Ribbon_Attending" TextAlignment="Center" HorizontalAlignment="Left" Height="34.5" TextWrapping="Wrap" VerticalAlignment="Top" Width="157.333" Margin="157.333,10,0,0" FontSize="24" FontWeight="Bold"><Run Text="Attending"/><LineBreak/><Run/></TextBlock>
+                <TextBlock x:Name="EventsScreen_Ribbon_Hosting" TextAlignment="Center" HorizontalAlignment="Left" Height="34.5" TextWrapping="Wrap" Text="Hosting" VerticalAlignment="Top" Width="157.333" Margin="314.666,10,0,0" FontSize="24" FontWeight="Bold"/>
+            </Grid>
+            <local:EventControl x:Name="TestEvent" Margin="48.5,166.5,45.5,340"/>
         </Grid>
         <Grid x:Name="HelpScreen" d:IsHidden="True">
             <TextBox x:Name="SearchBox1" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="What do you need help with?" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
@@ -213,7 +212,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid x:Name="Ribbon" Margin="0,0,0,687" Background="#000000F9">
+        <Grid x:Name="Ribbon" Margin="0,0,0,687" Background="#000000F9" d:IsHidden="True">
             <Rectangle x:Name="Ribbon_NewsFeedIcon_Mask" Fill="#26000000" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="118"/>
             <Rectangle x:Name="Ribbon_EventsIcon_Mask" Fill="#26000000" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="118" Margin="118,0,0,0"/>
             <Rectangle x:Name="Ribbon_ProfileIcon_Mask" Fill="#26000000" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="118" Margin="236,0,0,0"/>
@@ -224,15 +223,15 @@
             <Image x:Name="Ribbon_DogInfoIcon" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="98" Margin="364,5,0,0" Source="ribbon_dogInfo.png" Stretch="Fill" MouseDown="Ribbon_DogInfoButton_Click"/>
         </Grid>
         <Grid x:Name="CreateEventScreen" d:IsHidden="True">
-            <Image x:Name="CreateEvent_Image" HorizontalAlignment="Left" Height="172.919" Margin="0,81.323,0,0" VerticalAlignment="Top" Width="472" Source="event.jpg" Stretch="Fill"/>
-            <TextBlock x:Name="CreateEvent_NameLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,299.987,0,0" TextWrapping="Wrap" Text="Event Name:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
-            <TextBox x:Name="CreateEvent_NameInput" HorizontalAlignment="Left" Height="33.819" Margin="161.031,301.944,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="300.969" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
-            <TextBlock x:Name="CreateEvent_LocationLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,347.719,0,0" TextWrapping="Wrap" Text="Location:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
-            <TextBox x:Name="CreateEvent_LocationInput" HorizontalAlignment="Left" Height="33.819" Margin="161.031,349.676,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="300.969" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
-            <DatePicker x:Name="CreateEvent_DayPicker" HorizontalAlignment="Left" Height="36.679" Margin="161.031,388.495,0,0" VerticalAlignment="Top" Width="300.969" FontSize="18"/>
-            <TextBlock x:Name="CreateEvent_DayLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,389.398,0,0" TextWrapping="Wrap" Text="Day:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
-            <TextBlock x:Name="CreateEvent_TimeLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,430.174,0,0" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
-            <ComboBox x:Name="CreateEvent_TimePicker" HorizontalAlignment="Left" Height="35.776" Margin="161.031,430.174,0,0" VerticalAlignment="Top" Width="300.969" SelectedIndex="0" BorderBrush="#FFCADFFF">
+            <Image x:Name="CreateEvent_Image" HorizontalAlignment="Left" Height="207.419" Margin="0,10,0,0" VerticalAlignment="Top" Width="472" Source="event.jpg" Stretch="Fill"/>
+            <TextBlock x:Name="CreateEvent_NameLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,259.242,0,0" TextWrapping="Wrap" Text="Event Name:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <TextBox x:Name="CreateEvent_NameInput" HorizontalAlignment="Left" Height="33.819" Margin="161.031,261.199,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="300.969" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
+            <TextBlock x:Name="CreateEvent_LocationLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,306.974,0,0" TextWrapping="Wrap" Text="Location:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <TextBox x:Name="CreateEvent_LocationInput" HorizontalAlignment="Left" Height="33.819" Margin="161.031,308.931,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="300.969" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
+            <DatePicker x:Name="CreateEvent_DayPicker" HorizontalAlignment="Left" Height="36.679" Margin="161.031,347.75,0,0" VerticalAlignment="Top" Width="300.969" FontSize="18"/>
+            <TextBlock x:Name="CreateEvent_DayLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,348.653,0,0" TextWrapping="Wrap" Text="Day:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="CreateEvent_TimeLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,389.429,0,0" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
+            <ComboBox x:Name="CreateEvent_TimePicker" HorizontalAlignment="Left" Height="35.776" Margin="161.031,389.429,0,0" VerticalAlignment="Top" Width="300.969" SelectedIndex="0" BorderBrush="#FFCADFFF">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -240,11 +239,31 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <TextBlock x:Name="CreateEvent_DescriptionLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,470.95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"><Run Text="Description:"/><LineBreak/><Run/></TextBlock>
-            <TextBox x:Name="CreateEvent_DescriptionInput" HorizontalAlignment="Left" Height="163.217" Margin="10,505.764,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="452" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
-            <Button x:Name="CreateEvent_CreateButton" Content="Create!" HorizontalAlignment="Left" Height="69.478" Margin="253.391,689.522,0,0" VerticalAlignment="Top" Width="208.609" BorderBrush="#FFCADFFF" Background="#FF94FF99" FontSize="24" FontWeight="Bold" Click="CreateEvent_CreateButton_Click"/>
-            <Button x:Name="CreateEvent_CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="69.478" Margin="10,689.522,0,0" VerticalAlignment="Top" Width="207.615" BorderBrush="#FFCADFFF" Background="#FFFFE4E4" FontSize="24" FontWeight="Bold" Click="CreateEvent_CancelButton_Click"/>
+            <TextBlock x:Name="CreateEvent_DescriptionLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,430.205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"><Run Text="Description:"/><LineBreak/><Run/></TextBlock>
+            <TextBox x:Name="CreateEvent_DescriptionInput" HorizontalAlignment="Left" Height="175.5" Margin="10,470.981,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="452" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
+            <Button x:Name="CreateEvent_CreateButton" Content="Finish!" HorizontalAlignment="Left" Height="69.478" Margin="253.391,669.522,0,0" VerticalAlignment="Top" Width="208.609" BorderBrush="#FFCADFFF" Background="#FF94FF99" FontSize="24" FontWeight="Bold" Click="CreateEvent_CreateButton_Click"/>
+            <Button x:Name="CreateEvent_CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="69.478" Margin="10,669.522,0,0" VerticalAlignment="Top" Width="207.615" BorderBrush="#FFCADFFF" Background="#FFFFE4E4" FontSize="24" FontWeight="Bold" Click="CreateEvent_CancelButton_Click"/>
             <TextBlock x:Name="CreateEvent_WarningBanner" HorizontalAlignment="Left" TextAlignment="Center" Height="35.745" Margin="0,259.242,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="472" FontWeight="Bold" FontSize="22" Foreground="Red" Visibility="Hidden"/>
+        </Grid>
+        <Grid x:Name="EventInfoScreen">
+            <Image x:Name="EventInfo_Image" HorizontalAlignment="Left" Height="241" VerticalAlignment="Top" Width="472" Source="event.jpg" Stretch="Fill"/>
+            <TextBlock x:Name="EventInfo_Month" TextAlignment="Center" HorizontalAlignment="Left" Height="34.5" Margin="22,246,0,0" TextWrapping="Wrap" Text="Apr" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="ExtraBold" Foreground="Red"/>
+            <TextBlock x:Name="EventInfo_Day" TextAlignment="Center" HorizontalAlignment="Left" Height="36.5" Margin="22,280.5,0,0" TextWrapping="Wrap" Text="13" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="EventInfo_Name" HorizontalAlignment="Left" Height="35.5" Margin="118.5,253.633,0,0" TextWrapping="Wrap" Text="Event Name!!!" VerticalAlignment="Top" Width="343.5" FontSize="24" FontWeight="SemiBold"/>
+            <TextBlock x:Name="EventInfo_HostName" HorizontalAlignment="Left" Height="26.5" Margin="118.5,289.133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343.5" FontSize="16" Foreground="#FF8D8D8D"><Run Text="Hosted by John"/><LineBreak/><Run/></TextBlock>
+            <Rectangle x:Name="spacer" HorizontalAlignment="Left" Height="2" Margin="22,388.5,0,0" Stroke="#FF838383" StrokeThickness="3" VerticalAlignment="Top" Width="430"/>
+            <TextBlock x:Name="EventInfo_Info" HorizontalAlignment="Left" Height="68.5" Margin="38.5,322,0,0" TextWrapping="Wrap" Text="Information about the event it will be so cool you don't even know!!!" VerticalAlignment="Top" Width="413.5" FontSize="18"/>
+            <TextBlock x:Name="EventInfo_AttendingLabel" HorizontalAlignment="Left" Height="39.5" Margin="38.5,395.5,0,0" TextWrapping="Wrap" Text="Going:" VerticalAlignment="Top" Width="413.5" FontSize="22" FontWeight="SemiBold"/>
+            <ListView x:Name="EventInfo_AttendanceList" HorizontalAlignment="Left" Height="263" Margin="33.5,432,0,0" VerticalAlignment="Top" Width="418.5" BorderBrush="{x:Null}" Foreground="Black" Background="#FFE0E1F0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="EventInfo_Attend" Content="Attend!" HorizontalAlignment="Left" Height="37" Margin="293,711,0,0" VerticalAlignment="Top" Width="154" BorderBrush="{x:Null}" Background="#198A8FFF" FontSize="20" Click="EventInfo_AttendToggle_Click"/>
+            <Button x:Name="EventInfo_BackButton" Content="Back" HorizontalAlignment="Left" Height="37" Margin="38.5,711,0,0" VerticalAlignment="Top" Width="172.5" BorderBrush="{x:Null}" Background="#198A8FFF" FontSize="20" Click="GoBack"/>
+            <Button x:Name="EventInfo_EditButton" Content="Edit" HorizontalAlignment="Left" Height="37" Margin="293,711,0,0" VerticalAlignment="Top" Width="154" BorderBrush="{x:Null}" Background="#198A8FFF" FontSize="20" Click="EventInfo_EditButton_Click"/>
         </Grid>
     </Grid>
 </Window>
