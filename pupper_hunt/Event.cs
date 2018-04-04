@@ -45,6 +45,11 @@ namespace pupper_hunt
             return CreatedEvents[index];
         }
 
+        public static List<Event> GetAllEvents()
+        {
+            return CreatedEvents;
+        }
+
         public static ImageSource GetNextEventImage()
         {
             return ImageManager.GetImageSource("event" + ((CreatedEvents.Count % NUM_EVENT_PICTURES) + 1).ToString());

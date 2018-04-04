@@ -49,9 +49,11 @@ namespace pupper_hunt
             toAttend.Attend(this);
         }
 
-        public void HostEvent(ImageSource image, string name, string description, string location, DateTime time)
+        public Event HostEvent(ImageSource image, string name, string description, string location, DateTime time)
         {
-            HostedEvents.Add(new Event(this, image, name, description, location, time));
+            Event hostedEvent = new Event(this, image, name, description, location, time);
+            HostedEvents.Add(hostedEvent);
+            return hostedEvent;
         }
 
         public void CancelHostedEvent(Event hostedEvent)

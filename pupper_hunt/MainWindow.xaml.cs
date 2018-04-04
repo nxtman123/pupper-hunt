@@ -65,10 +65,18 @@ namespace pupper_hunt
             Account boo = mAccountManager.AddAccount("Boo", "Ahhh", Account.Type.DogOwner);
             Account peep = mAccountManager.AddAccount("Peep a Sheep", "sheep", Account.Type.DogOwner);
 
-            Event testEvent = new Event(lacy, ImageManager.GetImageSource("event1"), "Lets go to the park!", "PARK", "DID I SAY PARK?!", DateTime.Now);
+            Event testEvent = johnSmith.HostEvent(Event.GetNextEventImage(), "Lets go to the park!", "Park", "Got 30 minutes lets do this", DateTime.Now);
             boo.AttendEvent(testEvent);
             peep.AttendEvent(testEvent);
-            TestEvent.Initialize(testEvent);
+
+            testEvent = new Event(boo, Event.GetNextEventImage(), "Go play fetch!", "Field", "First one there wins", DateTime.Now);
+            boo.AttendEvent(testEvent);
+            peep.AttendEvent(testEvent);
+            johnSmith.AttendEvent(testEvent);
+
+            testEvent = new Event(peep, Event.GetNextEventImage(), "Who want's to go for a stroll?", "Crowfoot", "Only tame dogs", DateTime.Now);
+            boo.AttendEvent(testEvent);
+            johnSmith.AttendEvent(testEvent);
         }
 
         public static MainWindow Instance()
@@ -143,7 +151,14 @@ namespace pupper_hunt
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            GoToScreen(LoginScreen);
+            //GoToScreen(LoginScreen);
+            { /// REMOVE LATER
+                AccountManager.LoginResult result = mAccountManager.Login("john", "smith", out mCurrentAccount);
+                mGridStack.Peek().Visibility = Visibility.Hidden;
+                mGridStack.Clear();
+                Ribbon.Visibility = Visibility.Visible;
+                GoToScreen(NewsFeedScreen);
+            }
         }
 
 
@@ -184,6 +199,7 @@ namespace pupper_hunt
         {
             if (mGridStack.Peek() != EventsScreen)
             {
+                SelectEventsRibbon("NearBy");
                 GoToScreen(EventsScreen);
             }
         }
@@ -490,6 +506,52 @@ namespace pupper_hunt
                 EventInfo_Attend.Content = "Cancel";
             }
             PopulateEventInfoScreen(attending);
+        }
+
+        private void EventsScreen_Toggle_EventList(object sender, MouseButtonEventArgs e)
+        {
+            string tag = (string)(sender as TextBlock).Tag;
+            if ((string)EventsScreen.Tag != tag)
+            {
+                EventsScreen.Tag = tag;
+                SelectEventsRibbon(tag);
+            }
+        }
+
+        private void SelectEventsRibbon(string tag)
+        {
+            EventsScreen_Ribbon_Nearby_Mask.Visibility = Visibility.Visible;
+            EventsScreen_Ribbon_Attending_Mask.Visibility = Visibility.Visible;
+            EventsScreen_Ribbon_Hosting_Mask.Visibility = Visibility.Visible;
+            
+
+            EventsScreen_EventList.Children.Clear();
+            List<Event> events = new List<Event>();
+            if (tag.Equals("NearBy"))
+            {
+                EventsScreen_Ribbon_Nearby_Mask.Visibility = Visibility.Hidden;
+                events = Event.GetAllEvents();
+            }
+            else if (tag.Equals("Attending"))
+            {
+                EventsScreen_Ribbon_Attending_Mask.Visibility = Visibility.Hidden;
+                events = mCurrentAccount.AttendingEvents;
+            }
+            else if (tag.Equals("Hosting"))
+            {
+                EventsScreen_Ribbon_Hosting_Mask.Visibility = Visibility.Hidden;
+                events = mCurrentAccount.HostedEvents;
+            }
+
+            double stackWidth = EventsScreen_EventList.Width;
+
+            foreach( Event e in events)
+            {
+                EventControl ec = new EventControl() { HorizontalAlignment = HorizontalAlignment.Center };
+                ec.Initialize(e);
+                EventsScreen_EventList.Children.Add(ec);
+            }
+            
         }
     }
 }

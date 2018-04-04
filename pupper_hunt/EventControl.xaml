@@ -7,13 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="262.5" d:DesignWidth="378">
     <Grid>
-        <Grid x:Name="Control" HorizontalAlignment="Left" Height="262.5" Margin="0,0,-378,-262.5" VerticalAlignment="Top" Width="378">
-            <Image x:Name="EventImage" HorizontalAlignment="Left" Height="181.5" VerticalAlignment="Top" Width="378" MouseDown="EventImage_MouseDown"/>
-            <TextBlock x:Name="EventMonth" TextAlignment="Center" HorizontalAlignment="Left" Height="34.5" Margin="0,181.5,0,0" TextWrapping="Wrap" Text="Apr" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="ExtraBold" Foreground="Red"/>
-            <TextBlock x:Name="EventDay" TextAlignment="Center" HorizontalAlignment="Left" Height="36.5" Margin="0,216,0,0" TextWrapping="Wrap" Text="13" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="Bold"/>
-            <TextBlock x:Name="EventName" HorizontalAlignment="Left" Height="28.5" Margin="70.5,181.5,0,0" TextWrapping="Wrap" Text="Let's go play catch!" VerticalAlignment="Top" Width="303" FontSize="18" FontWeight="Bold"/>
-            <TextBlock x:Name="EventLocation" HorizontalAlignment="Left" Height="28.5" Margin="70.5,210,0,0" TextWrapping="Wrap" Text="Ranchmans" VerticalAlignment="Top" Width="303" FontSize="16" FontWeight="Bold" Foreground="#FF787878"/>
-            <TextBlock x:Name="EventAttendance" HorizontalAlignment="Left" Height="28.5" Margin="70.5,234,0,0" TextWrapping="Wrap" Text="8 people going" VerticalAlignment="Top" Width="303" FontSize="16" FontWeight="Bold" Foreground="#FF787878"/>
+        <Grid x:Name="Control" HorizontalAlignment="Left" Height="262.5" Margin="0" VerticalAlignment="Top" Width="378">
+            <Image x:Name="EventImage" HorizontalAlignment="Left" Height="181.5" VerticalAlignment="Top" Width="378" MouseDown="EventImage_MouseDown" Stretch="Fill"/>
+            <TextBlock x:Name="EventMonth" TextAlignment="Center" HorizontalAlignment="Left" Height="34.5" Margin="37.175,181.5,0,0" TextWrapping="Wrap" Text="Apr" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="ExtraBold" Foreground="Red"/>
+            <TextBlock x:Name="EventDay" TextAlignment="Center" HorizontalAlignment="Left" Height="36.5" Margin="37.175,216,0,0" TextWrapping="Wrap" Text="13" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="EventName" HorizontalAlignment="Left" Height="28.5" Margin="112.675,181.5,0,0" TextWrapping="Wrap" Text="Let's go play catch!" VerticalAlignment="Top" Width="260.825" FontSize="18" FontWeight="Bold"/>
+            <TextBlock x:Name="EventLocation" HorizontalAlignment="Left" Height="28.5" Margin="112.675,210,0,0" TextWrapping="Wrap" Text="Ranchmans" VerticalAlignment="Top" Width="260.825" FontSize="16" FontWeight="Bold" Foreground="#FF787878"/>
+            <TextBlock x:Name="EventAttendance" HorizontalAlignment="Left" Height="28.5" Margin="112.675,234,0,0" TextWrapping="Wrap" Text="8 people going" VerticalAlignment="Top" Width="260.825" FontSize="16" FontWeight="Bold" Foreground="#FF787878"/>
         </Grid>
 
     </Grid>
