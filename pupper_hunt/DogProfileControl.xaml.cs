@@ -27,7 +27,17 @@ namespace pupper_hunt
 
         private void DogBreed_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            e.Handled = true;
             MainWindow.Instance().NavigateToDogScreen(sender, e);
+            
+        }
+
+        public void Initialize(ImageSource image, string name, string breed, string bio)
+        { 
+            (Image.Fill as ImageBrush).ImageSource = image;
+            DogName.Text = name;
+            DogBreed.Text = breed;
+            DogBio.Text = bio;
         }
     }
 }

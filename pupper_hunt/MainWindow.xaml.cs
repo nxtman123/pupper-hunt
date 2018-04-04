@@ -51,6 +51,7 @@ namespace pupper_hunt
             CreateEventScreen.Visibility = Visibility.Hidden;
             SignUpScreen.Visibility = Visibility.Hidden;
             ProfileEditScreen.Visibility = Visibility.Hidden;
+            DogEditScreen.Visibility = Visibility.Hidden;
             ProfileScreen.Visibility = Visibility.Hidden;
             DogInformationScreen.Visibility = Visibility.Hidden;
             BusinessProfileScreen.Visibility = Visibility.Hidden;
@@ -262,35 +263,101 @@ namespace pupper_hunt
             ProfileEdit_UserBio.Text = mCurrentAccount.Profile.Bio;
         }
 
+        private void PopulateDogEditScreen()
+        {
+            if (!DogEdit_BreedSelector.HasItems)
+            {
+                for (int i = 0; i < (int)DogProfile.DogBreed.NUM; ++i)
+                {
+                    DogEdit_BreedSelector.Items.Add(new ComboBoxItem() { Content = ((DogProfile.DogBreed)i).ToString() });
+                }
+            }
+
+            int tag = (int)DogEditScreen.Tag;
+            DogProfile toEdit = tag == -1 ? null : (mCurrentAccount as DogOwnerAccount).Dogs[tag];
+
+            DogEdit_Image.Source = toEdit != null ? toEdit.ImageSource : ImageManager.GetImageSource("corgiProfile");
+            DogEdit_Name.Text = toEdit != null ? toEdit.Name : "";
+            DogEdit_Bio.Text = toEdit != null ? toEdit.Bio : "";
+            DogEdit_BreedSelector.SelectedIndex = toEdit != null ? (int)toEdit.Breed : 0;
+        }
+
+        private void DogEdit_SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            int dogIndex = (int)DogEditScreen.Tag;
+            if (dogIndex == -1) // created a new pup!
+            {
+                (mCurrentAccount as DogOwnerAccount).AddDog((DogProfile.DogBreed)DogEdit_BreedSelector.SelectedIndex, DogEdit_Name.Text, DogEdit_Bio.Text);
+            }
+            else
+            {
+                (mCurrentAccount as DogOwnerAccount).UpdateDog((int)DogEditScreen.Tag, (DogProfile.DogBreed)DogEdit_BreedSelector.SelectedIndex, DogEdit_Name.Text, DogEdit_Bio.Text);
+            }
+            PopulateProfileScreen();
+            GoBack();
+        }
+
+        private void DogEdit_BreedSelector_Changed(object sender, EventArgs e)
+        {
+            ImageSource source = null;
+            switch (DogEdit_BreedSelector.SelectedIndex)
+            {
+                case ((int)DogProfile.DogBreed.Corgi):
+                    source = ImageManager.GetImageSource("corgiProfile");
+                    break;
+                case ((int)DogProfile.DogBreed.Husky):
+                    source = ImageManager.GetImageSource("huskyProfile");
+                    break;
+                case ((int)DogProfile.DogBreed.Lab):
+                    source = ImageManager.GetImageSource("labProfile");
+                    break;
+            }
+            DogEdit_Image.Source = source;
+        }
+
         private void PopulateProfileScreen()
         {
             Profile_Image.Source = mCurrentAccount.Profile.ImageSource;
             Profile_Name.Text = mCurrentAccount.Profile.Name;
             Profile_Bio.Text = mCurrentAccount.Profile.Bio;
             DogOwnerAccount dogOwnerAccount = mCurrentAccount as DogOwnerAccount;
+            
             if (dogOwnerAccount != null)
             {
-                int counter = 0;
+                Profile_PupperList.Children.Clear();
                 List<DogProfile> dogs = dogOwnerAccount.Dogs;
-                foreach (var child in Profile_DogsList.Children)
+                foreach (DogProfile dog in dogs)
                 {
-                    DogProfileControl dpc = child as DogProfileControl;
-                    if (dogs.Count > counter)
-                    {
-                        dpc.Visibility = Visibility.Visible;
-                        dpc.Image.Source = dogs[counter].ImageSource;
-                        dpc.DogName.Text = dogs[counter].Name;
-                        dpc.DogBreed.Text = dogs[counter].Breed.ToString();
-                        dpc.DogBio.Text = dogs[counter].Bio;
-                    }
-                    else
-                    {
-                        dpc.Visibility = Visibility.Hidden;
-                    }
-                    ++counter;
+                    DogProfileControl dpc = new DogProfileControl() { HorizontalAlignment = HorizontalAlignment.Center };
+                    dpc.Tag = Profile_PupperList.Children.Count;
+                    Profile_PupperList.Children.Add(dpc);
+                    
+                    dpc.MouseDown += Dpc_MouseDown;
+                    dpc.Initialize(dog.ImageSource, dog.Name, dog.Breed.ToString(), dog.Bio);
                 }
             }
            
+        }
+
+        private void Dpc_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.Handled) return;
+            DogProfileControl dpc = sender as DogProfileControl;
+            if (dpc != null)
+            {
+                DogEditScreen.Tag = dpc.Tag;
+                Ribbon.Visibility = Visibility.Hidden;
+                PopulateDogEditScreen();
+                GoToScreen(DogEditScreen);
+            }
+        }
+
+        private void Profile_AddPupper_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DogEditScreen.Tag = -1;
+            Ribbon.Visibility = Visibility.Hidden;
+            PopulateDogEditScreen();
+            GoToScreen(DogEditScreen);
         }
 
         private void UpdateAccountProfile()
@@ -445,8 +512,8 @@ namespace pupper_hunt
         private DogOwnerAccount CreateFakeAccount()
         {
             DogOwnerAccount account = mAccountManager.AddAccount("john", "smith", Account.Type.DogOwner) as DogOwnerAccount;
-            account.AddDog();
-            account.AddDog();
+            account.AddDog(DogProfile.DogBreed.Husky, "Fido","Loves Fetch");
+            account.AddDog(DogProfile.DogBreed.Lab, "Rover", "RUFFF!");
             return account;
         }
 

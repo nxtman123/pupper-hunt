@@ -188,5 +188,8 @@
   <ItemGroup>
     <Resource Include="ribbon_dogInfo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="addDogIcon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

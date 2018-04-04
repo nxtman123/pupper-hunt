@@ -109,17 +109,21 @@ namespace pupper_hunt
             Dogs = new List<DogProfile>();
         }
 
-        public void AddDog()
+        public DogProfile AddDog(DogProfile.DogBreed breed, string name, string bio)
         {
-            if (Dogs.Count < 2)
-            {
-                Dogs.Add(new DogProfile((DogProfile.DogBreed)Dogs.Count, DogProfile.FriendlinessRating.Good, "", ""));
-            }
+            DogProfile newDog = new DogProfile(breed, DogProfile.FriendlinessRating.Good, name, bio);
+            Dogs.Add(newDog);
+            return newDog;
         }
 
-        public void UpdateDog(int dogNumber, string name, string bio)
+        public void RemoveDog(int atIndex)
         {
-            Dogs[dogNumber].UpdateInfo(name, bio);
+            Dogs.RemoveAt(atIndex);
+        }
+
+        public void UpdateDog(int dogNumber, DogProfile.DogBreed breed, string name, string bio)
+        {
+            Dogs[dogNumber].UpdateInfo(breed, name, bio);
         }
     }
 

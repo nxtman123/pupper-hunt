@@ -41,7 +41,8 @@ namespace pupper_hunt
         {
             Corgi,
             Husky,
-            Lab
+            Lab,
+            NUM
         }
 
         public enum FriendlinessRating
@@ -55,10 +56,18 @@ namespace pupper_hunt
         public FriendlinessRating Rating;
 
         public DogProfile(DogBreed breed, FriendlinessRating rating, string name, string bio)
-            : base(name, bio, ImageManager.GetImageSource(breed.ToString() + "Profile"))
+            : base(name, bio, ImageManager.GetImageSource(breed.ToString().ToLower() + "Profile"))
         {
             Breed = breed;
             Rating = rating;
+        }
+
+        public void UpdateInfo(DogBreed breed, string name, string bio)
+        {
+            ImageSource = ImageManager.GetImageSource(breed.ToString().ToLower() + "Profile");
+            Breed = breed;
+            Name = name;
+            Bio = bio;
         }
     }
 }

@@ -70,7 +70,19 @@
             <TextBlock x:Name="ProfileEdit_BioLabel" HorizontalAlignment="Left" Height="37" Margin="62,199.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Bio"/>
             <TextBlock x:Name="ProfileEdit_DogsLabel" HorizontalAlignment="Left" Height="37" Margin="62,366.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Puppers"/>
         </Grid>
-        <Grid x:Name="ProfileScreen" d:IsHidden="True">
+        <Grid x:Name="DogEditScreen" d:IsHidden="True">
+            <Button x:Name="DogEdit_CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="50" Margin="39.5,25.5,0,0" VerticalAlignment="Top" Width="87" Background="#79FF0000" BorderBrush="{x:Null}" FontSize="24" Click="GoBack"/>
+            <Button x:Name="DogEdit_SaveButton" Content="Save" HorizontalAlignment="Left" Height="50" Margin="373,25.5,0,0" VerticalAlignment="Top" Width="89" Background="#7900FF5D" BorderBrush="{x:Null}" FontSize="24" Click="DogEdit_SaveButton_Click"/>
+            <Image x:Name="DogEdit_Image" HorizontalAlignment="Left" Height="141.5" Margin="167.5,201.5,0,0" VerticalAlignment="Top" Width="147.899" Stretch="Fill"/>
+            <TextBox x:Name="DogEdit_Name" HorizontalAlignment="Right" Height="40" Margin="0,384,50.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
+            <TextBlock x:Name="DogEdit_NameLabel" HorizontalAlignment="Left" Height="37" Margin="63.5,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252.722" FontSize="24" FontWeight="Bold"><Run Text="Name"/><LineBreak/><Run/></TextBlock>
+            <TextBox x:Name="DogEdit_Bio" HorizontalAlignment="Center" Height="125" Margin="63.5,466,50.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
+            <ComboBox x:Name="DogEdit_BreedSelector" HorizontalAlignment="Left" Height="54" Margin="66.5,647.5,0,0" VerticalAlignment="Top" Width="357" AutomationProperties.HelpText="&lt;Account Type&gt;" FontSize="24" Foreground="Black" SelectionChanged="DogEdit_BreedSelector_Changed"/>
+            <TextBlock x:Name="DogEdit_BreedLabel" HorizontalAlignment="Left" Height="37" Margin="66.5,605.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Breed"/>
+            <TextBlock x:Name="DogEdit_BioLabel_Copy" HorizontalAlignment="Left" Height="37" Margin="63.5,429,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Bio"/>
+            <TextBlock x:Name="DogEdit_WarningBanner" Visibility="Hidden" TextAlignment="Center" Height="37.5" Margin="40,101.5,40,0" TextWrapping="Wrap" Text="WARNING!" VerticalAlignment="Top" FontSize="24" Foreground="Red"/>
+        </Grid>
+        <Grid x:Name="ProfileScreen">
             <TextBlock x:Name="Profile_Name" HorizontalAlignment="Left" Height="40" Margin="233,224.5,0,0" TextWrapping="Wrap" Text="John Smith" VerticalAlignment="Top" Width="185" FontSize="24" Background="#190000DC"/>
             <TextBlock x:Name="Profile_Bio" HorizontalAlignment="Left" Height="125" Margin="58,298.5,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin eu nibh sit amet suscipit." VerticalAlignment="Top" Width="360" FontSize="24" Background="#190000DC"/>
             <Button x:Name="Profile_EditButton" Content="" HorizontalAlignment="Left" Height="60.5" Margin="396,94.5,0,0" VerticalAlignment="Top" Width="66" BorderBrush="{x:Null}" FontSize="24" Click="Profile_EditButton_Click">
@@ -82,11 +94,10 @@
             <TextBlock x:Name="Profile_NameLabel" HorizontalAlignment="Left" Height="29" Margin="233,190.5,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
             <TextBlock x:Name="Profile_AboutLabel" HorizontalAlignment="Left" Height="29" Margin="58,264.5,0,0" TextWrapping="Wrap" Text="About" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
             <TextBlock x:Name="Profile_DogsLabel" HorizontalAlignment="Left" Height="29" Margin="58,430.5,0,0" TextWrapping="Wrap" Text="Puppers" VerticalAlignment="Top" Width="137" FontSize="24" FontWeight="Bold"/>
-            <Grid x:Name="Profile_DogsList" HorizontalAlignment="Left" Height="299.5" Margin="10,459.5,0,0" VerticalAlignment="Top" Width="452">
-                <local:DogProfileControl x:Name="Profile_Dog1" Margin="48,0,44,203"/>
-                <local:DogProfileControl x:Name="Profile_Dog2" Margin="48,96.5,44,106.5"/>
-                <local:DogProfileControl x:Name="Profile_Dog3" Margin="48,198,44,5"/>
-            </Grid>
+            <ScrollViewer x:Name="Profile_PupperScroller" HorizontalAlignment="Left" Height="261" Margin="58,479.5,0,0" VerticalAlignment="Top" Width="360" VerticalScrollBarVisibility="Hidden">
+                <StackPanel x:Name="Profile_PupperList"/>
+            </ScrollViewer>
+            <Image x:Name="Profile_AddPupper" HorizontalAlignment="Left" Height="51" Margin="355.5,423.5,0,0" VerticalAlignment="Top" Width="62.5" Source="addDogIcon.jpg" Stretch="Fill" MouseDown="Profile_AddPupper_MouseDown"/>
         </Grid>
         <Grid x:Name="DogInformationScreen" d:IsHidden="True">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" Text="Newfoundland" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
@@ -178,7 +189,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Katie's Cafe is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
             </Grid>
         </Grid>
-        <Grid x:Name="EventsScreen">
+        <Grid x:Name="EventsScreen" d:IsHidden="True">
             <Grid x:Name="DoSearchButton" Margin="74.25,159.5,85.5,564.5" RenderTransformOrigin="0.173,6.489">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
                 <Path Data="M453.25,141.25 L438.5,127.25" HorizontalAlignment="Left" Height="17" Margin="15.5,16.25,0,0" Stretch="Fill" Stroke="Black" StrokeThickness="3" VerticalAlignment="Top" Width="17.75"/>
