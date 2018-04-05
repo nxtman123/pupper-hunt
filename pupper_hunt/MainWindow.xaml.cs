@@ -440,7 +440,10 @@ namespace pupper_hunt
 
         private void PopulateDogInformationScreen(DogBreed dogBreed)
         {
-
+            BreedInfo breed_info = new BreedInfo(dogBreed);
+            InfoText.Text = breed_info.About;
+            BreedTitle.Text = breed_info.Name;
+            BreedPhoto.Source = ImageManager.GetImageSource(dogBreed.ToString().ToLower() + "Profile");
         }
 
         #endregion
