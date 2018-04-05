@@ -63,19 +63,24 @@ namespace pupper_hunt
             RefreshRibbonButtons();
 
             Account lacy = mAccountManager.AddAccount("Lacy loo who", "nope", Account.Type.DogOwner);
+            lacy.UpdateProfile("Lacy", "I love dogs :)");
             Account boo = mAccountManager.AddAccount("Boo", "Ahhh", Account.Type.DogOwner);
-            Account peep = mAccountManager.AddAccount("Peep a Sheep", "sheep", Account.Type.DogOwner);
+            boo.UpdateProfile("Bo Peep", "Someone get me a ball to throw for my lab");
+            Account ronny = mAccountManager.AddAccount("Peep a Sheep", "sheep", Account.Type.BusinessOwner);
+            ronny.UpdateProfile("Ronny Coleman", "Looking for my pupper solemate");
 
             Event testEvent = johnSmith.HostEvent(Event.GetNextEventImage(), "Lets go to the park!", "Park", "Got 30 minutes lets do this", DateTime.Now);
             boo.AttendEvent(testEvent);
-            peep.AttendEvent(testEvent);
+            ronny.AttendEvent(testEvent);
+            lacy.AttendEvent(testEvent);
 
             testEvent = new Event(boo, Event.GetNextEventImage(), "Go play fetch!", "Field", "First one there wins", DateTime.Now);
             boo.AttendEvent(testEvent);
-            peep.AttendEvent(testEvent);
+            ronny.AttendEvent(testEvent);
             johnSmith.AttendEvent(testEvent);
+            lacy.AttendEvent(testEvent);
 
-            testEvent = new Event(peep, Event.GetNextEventImage(), "Who want's to go for a stroll?", "Crowfoot", "Only tame dogs", DateTime.Now);
+            testEvent = new Event(ronny, Event.GetNextEventImage(), "Who want's to go for a stroll?", "Crowfoot", "Only tame dogs", DateTime.Now);
             boo.AttendEvent(testEvent);
             johnSmith.AttendEvent(testEvent);
         }
@@ -84,13 +89,18 @@ namespace pupper_hunt
         {
             return mInstance;
         }
-
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------SIGN UP FLOW-----------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
         #region SignupFlow
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
             mGridStack.Peek().Visibility = Visibility.Hidden;
             CreateAccountScreen.Visibility = Visibility.Visible;
+            AccountUsernameField.Text = "";
+            AccountPasswordField.Text = "";
+            AccountTypeSelector.SelectedIndex = 0;
             mGridStack.Push(CreateAccountScreen);
         }
 
@@ -148,20 +158,30 @@ namespace pupper_hunt
         }
         #endregion
 
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------LOGIN FLOW-------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
         #region LoginFlow
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            //GoToScreen(LoginScreen);
-            { /// REMOVE LATER
-                AccountManager.LoginResult result = mAccountManager.Login("john", "smith", out mCurrentAccount);
-                mGridStack.Peek().Visibility = Visibility.Hidden;
-                mGridStack.Clear();
-                Ribbon.Visibility = Visibility.Visible;
-                GoToScreen(NewsFeedScreen);
-            }
+            PopulateLoginScreen();
+            GoToScreen(LoginScreen);
+            //{ // TEMP FLOW
+            //    AccountManager.LoginResult result = mAccountManager.Login("john", "smith", out mCurrentAccount);
+            //    mGridStack.Peek().Visibility = Visibility.Hidden;
+            //    mGridStack.Clear();
+            //    Ribbon.Visibility = Visibility.Visible;
+            //    PopulateNewsFeed();
+            //    GoToScreen(NewsFeedScreen);
+            //}
         }
 
+        private void PopulateLoginScreen()
+        {
+            UsernameField.Text = "";
+            PasswordField.Password = "";
+        }
 
         private void ConfirmLoginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -174,24 +194,29 @@ namespace pupper_hunt
                 mGridStack.Peek().Visibility = Visibility.Hidden;
                 mGridStack.Clear();
                 Ribbon.Visibility = Visibility.Visible;
+                PopulateNewsFeed();
                 GoToScreen(NewsFeedScreen);
             }
             else if (result == AccountManager.LoginResult.IncorrectPassword)
             {
-
+                //TODO: Display warning
             }
             else if (result == AccountManager.LoginResult.AccountNotFound)
             {
-
+                //TODO: Display warning
             }
         }
         #endregion
 
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------RIBBON-----------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
         #region Ribbon
         private void Ribbon_NewsFeedButton_Click(object sender, MouseButtonEventArgs e)
         {
             if (mGridStack.Peek() != NewsFeedScreen)
             {
+                PopulateNewsFeed();
                 GoToScreen(NewsFeedScreen);
             }
         }
@@ -209,7 +234,7 @@ namespace pupper_hunt
         {
             if (mGridStack.Peek() != ProfileEditScreen)
             {
-                PopulateProfileScreen();
+                PopulateProfileScreen(mCurrentAccount, false);
                 GoToScreen(ProfileScreen);
             }
         }
@@ -232,12 +257,16 @@ namespace pupper_hunt
 
         #endregion
 
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------PROFILE----------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
         #region Profile
         private void Profile_EditButton_Click(object sender, RoutedEventArgs e)
         {
             Ribbon.Visibility = Visibility.Hidden;
             mGridStack.Peek().Visibility = Visibility.Hidden;
             ProfileEditScreen.Visibility = Visibility.Visible;
+            PopulateProfileEditScreen();
             mGridStack.Push(ProfileEditScreen);
         }
 
@@ -252,7 +281,7 @@ namespace pupper_hunt
             }
             
             Ribbon.Visibility = Visibility.Visible;
-            PopulateProfileScreen();
+            PopulateProfileScreen(mCurrentAccount, false);
             mGridStack.Peek().Visibility = Visibility.Visible;
         }
 
@@ -267,9 +296,16 @@ namespace pupper_hunt
         {
             if (!DogEdit_BreedSelector.HasItems)
             {
-                for (int i = 0; i < (int)DogProfile.DogBreed.NUM; ++i)
+                for (int i = 0; i < (int)DogBreed.NUM; ++i)
                 {
-                    DogEdit_BreedSelector.Items.Add(new ComboBoxItem() { Content = ((DogProfile.DogBreed)i).ToString() });
+                    DogEdit_BreedSelector.Items.Add(new ComboBoxItem() { Content = ((DogBreed)i).ToString() });
+                }
+            }
+            if (!DogEdit_PersonalitySelector.HasItems)
+            {
+                for (int i = 0; i < (int)DogPersonality.NUM; ++i)
+                {
+                    DogEdit_PersonalitySelector.Items.Add(new ComboBoxItem() { Content = ((DogPersonality)i).ToString() });
                 }
             }
 
@@ -280,6 +316,7 @@ namespace pupper_hunt
             DogEdit_Name.Text = toEdit != null ? toEdit.Name : "";
             DogEdit_Bio.Text = toEdit != null ? toEdit.Bio : "";
             DogEdit_BreedSelector.SelectedIndex = toEdit != null ? (int)toEdit.Breed : 0;
+            DogEdit_PersonalitySelector.SelectedIndex = toEdit != null ? (int)toEdit.Personality : 0;
         }
 
         private void DogEdit_SaveButton_Click(object sender, RoutedEventArgs e)
@@ -287,13 +324,13 @@ namespace pupper_hunt
             int dogIndex = (int)DogEditScreen.Tag;
             if (dogIndex == -1) // created a new pup!
             {
-                (mCurrentAccount as DogOwnerAccount).AddDog((DogProfile.DogBreed)DogEdit_BreedSelector.SelectedIndex, DogEdit_Name.Text, DogEdit_Bio.Text);
+                (mCurrentAccount as DogOwnerAccount).AddDog((DogBreed)DogEdit_BreedSelector.SelectedIndex, (DogPersonality)DogEdit_PersonalitySelector.SelectedIndex, DogEdit_Name.Text, DogEdit_Bio.Text);
             }
             else
             {
-                (mCurrentAccount as DogOwnerAccount).UpdateDog((int)DogEditScreen.Tag, (DogProfile.DogBreed)DogEdit_BreedSelector.SelectedIndex, DogEdit_Name.Text, DogEdit_Bio.Text);
+                (mCurrentAccount as DogOwnerAccount).UpdateDog((int)DogEditScreen.Tag, (DogBreed)DogEdit_BreedSelector.SelectedIndex, (DogPersonality)DogEdit_PersonalitySelector.SelectedIndex, DogEdit_Name.Text, DogEdit_Bio.Text);
             }
-            PopulateProfileScreen();
+            PopulateProfileScreen(mCurrentAccount, false);
             GoBack();
         }
 
@@ -302,25 +339,28 @@ namespace pupper_hunt
             ImageSource source = null;
             switch (DogEdit_BreedSelector.SelectedIndex)
             {
-                case ((int)DogProfile.DogBreed.Corgi):
+                case ((int)DogBreed.Corgi):
                     source = ImageManager.GetImageSource("corgiProfile");
                     break;
-                case ((int)DogProfile.DogBreed.Husky):
+                case ((int)DogBreed.Husky):
                     source = ImageManager.GetImageSource("huskyProfile");
                     break;
-                case ((int)DogProfile.DogBreed.Lab):
+                case ((int)DogBreed.Lab):
                     source = ImageManager.GetImageSource("labProfile");
                     break;
             }
             DogEdit_Image.Source = source;
         }
 
-        private void PopulateProfileScreen()
+        private void PopulateProfileScreen(Account account, bool fromHotLink)
         {
-            Profile_Image.Source = mCurrentAccount.Profile.ImageSource;
-            Profile_Name.Text = mCurrentAccount.Profile.Name;
-            Profile_Bio.Text = mCurrentAccount.Profile.Bio;
-            DogOwnerAccount dogOwnerAccount = mCurrentAccount as DogOwnerAccount;
+            Profile_AddPupper.Visibility = !fromHotLink ? Visibility.Visible : Visibility.Hidden;
+            Profile_EditButton.Visibility = !fromHotLink ? Visibility.Visible : Visibility.Hidden;
+            Profile_BackButton.Visibility = !fromHotLink ? Visibility.Hidden : Visibility.Visible;
+            Profile_Image.Source = account.Profile.ImageSource;
+            Profile_Name.Text = account.Profile.Name;
+            Profile_Bio.Text = account.Profile.Bio;
+            DogOwnerAccount dogOwnerAccount = account as DogOwnerAccount;
             
             if (dogOwnerAccount != null)
             {
@@ -332,11 +372,13 @@ namespace pupper_hunt
                     dpc.Tag = Profile_PupperList.Children.Count;
                     Profile_PupperList.Children.Add(dpc);
                     
-                    dpc.MouseDown += Dpc_MouseDown;
-                    dpc.Initialize(dog.ImageSource, dog.Name, dog.Breed.ToString(), dog.Bio);
+                    if (!fromHotLink)
+                    {
+                        dpc.MouseDown += Dpc_MouseDown;
+                    }
+                    dpc.Initialize(dog);
                 }
             }
-           
         }
 
         private void Dpc_MouseDown(object sender, MouseButtonEventArgs e)
@@ -367,6 +409,10 @@ namespace pupper_hunt
 
         #endregion
 
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------DOG INFO---------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
+        #region DogInfo
         public void NavigateToDogScreen(object sender, MouseButtonEventArgs e)
         {
             TextBlock tb = sender as TextBlock;
@@ -374,29 +420,56 @@ namespace pupper_hunt
             {
                 string content = tb.Text;
 
-                DogProfile.DogBreed breedToShow = DogProfile.DogBreed.Corgi;
-                if (content.Equals(DogProfile.DogBreed.Corgi.ToString()))
+                DogBreed breedToShow = DogBreed.Corgi;
+                if (content.Equals(DogBreed.Corgi.ToString()))
                 {
-                    breedToShow = DogProfile.DogBreed.Corgi;
+                    breedToShow = DogBreed.Corgi;
                 }
-                else if (content.Equals(DogProfile.DogBreed.Husky.ToString()))
+                else if (content.Equals(DogBreed.Husky.ToString()))
                 {
-                    breedToShow = DogProfile.DogBreed.Husky;
+                    breedToShow = DogBreed.Husky;
                 }
-                else if (content.Equals(DogProfile.DogBreed.Lab.ToString()))
+                else if (content.Equals(DogBreed.Lab.ToString()))
                 {
-                    breedToShow = DogProfile.DogBreed.Lab;
+                    breedToShow = DogBreed.Lab;
                 }
                 PopulateDogInformationScreen(breedToShow);
                 GoToScreen(DogInformationScreen);
             }
         }
 
-        private void PopulateDogInformationScreen(DogProfile.DogBreed dogBreed)
+        private void PopulateDogInformationScreen(DogBreed dogBreed)
         {
 
         }
 
+        #endregion
+
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------News Feed--------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
+        #region NewsFeed
+
+        private void PopulateNewsFeed()
+        {
+            News_NotificationList.Children.Clear();
+
+            foreach (Notification n in Notification.Notifications)
+            {
+                NotificationControl nc = new NotificationControl();
+                nc.Initialize(n);
+                nc.MouseDown += n.OnClick;
+                News_NotificationList.Children.Add(nc);
+            }
+        }
+
+
+        #endregion
+
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------Screen Navigation------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
+        #region NavigationFunctions
         public void NavigateToEventScreen(Event e)
         {
             Ribbon.Visibility = Visibility.Hidden;
@@ -404,19 +477,77 @@ namespace pupper_hunt
             GoToScreen(EventInfoScreen);
         }
 
+        public void NavigateToProfileScreen(Account account)
+        {
+            Ribbon.Visibility = Visibility.Hidden; // If jumping to profile view from another screen, replace ribbon with a back button
+            PopulateProfileScreen(account, true);
+            GoToScreen(ProfileScreen);
+        }
 
+        private void GoBack(object sender, EventArgs e)
+        {
+            GoBack();
+        }
+
+        private void GoBack()
+        {
+            mGridStack.Pop().Visibility = Visibility.Hidden;
+            if (mGridStack.Count > 0)
+            {
+                Ribbon.Visibility = Visibility.Visible; // Back is only ever called from info screens so returning screen will have ribbon
+                mGridStack.Peek().Visibility = Visibility.Visible;
+            }
+            else
+            {
+                // back at login screen. Hide Ribbon
+                Ribbon.Visibility = Visibility.Hidden;
+                WelcomeScreen.Visibility = Visibility.Visible;
+                mGridStack.Push(WelcomeScreen);
+            }
+        }
+
+        private void GoToScreen(Grid screen, bool refreshRibbon = true)
+        {
+            if (mGridStack.Count > 0)
+            {
+                mGridStack.Peek().Visibility = Visibility.Hidden;
+            }
+            mGridStack.Push(screen);
+            screen.Visibility = Visibility.Visible;
+            if (refreshRibbon)
+            {
+                RefreshRibbonButtons();
+            }
+        }
+
+        private void ProfileLink_Click(object sender, MouseButtonEventArgs e)
+        {
+            Account account = (sender as TextBlock).Tag as Account;
+            NavigateToProfileScreen(account);
+        }
+
+        #endregion
+
+        //-----------------------------------------------------------------------------------------------------//
+        //------------------------------------------Events-----------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------//
+        #region Events
         private void PopulateEventInfoScreen(Event toShow)
         {
             EventInfoScreen.Tag = toShow.Id;
             EventInfo_Image.Source = toShow.EventImageSource;
             EventInfo_Day.Text = toShow.EventTime.Day.ToString();
             EventInfo_Month.Text = Event.IntToMonth(toShow.EventTime.Day);
-            EventInfo_HostName.Text = toShow.EventCreator.AccountName;
+            EventInfo_HostedByLink.Text = toShow.EventCreator.Profile.Name;
+            EventInfo_HostedByLink.Tag = toShow.EventCreator;
+            EventInfo_Name.Text = toShow.EventName;
             EventInfo_Info.Text = toShow.EventDescription;
-            EventInfo_AttendanceList.Items.Clear();
+            EventInfo_AttendanceList.Children.Clear();
             foreach (Account attendee in toShow.EventAttendees)
             {
-                EventInfo_AttendanceList.Items.Add(new TextBlock() { Text = attendee.AccountName });
+                ProfileIconControl pic = new ProfileIconControl();
+                pic.Initialize(attendee);
+                EventInfo_AttendanceList.Children.Add(pic);
             }
 
             EventInfo_Attend.Visibility = toShow.EventCreator == mCurrentAccount ? Visibility.Hidden : Visibility.Visible;
@@ -443,7 +574,7 @@ namespace pupper_hunt
                         hour = hour - 12;
                         isPM = true;
                     }
-                    CreateEvent_TimePicker.Items.Add(hour.ToString() + ":00"+ " " + (isPM ? "PM" : "AM"));
+                    CreateEvent_TimePicker.Items.Add(hour.ToString() + ":00" + " " + (isPM ? "PM" : "AM"));
                     CreateEvent_TimePicker.Items.Add(hour.ToString() + ":30" + " " + (isPM ? "PM" : "AM"));
                 }
             }
@@ -474,6 +605,7 @@ namespace pupper_hunt
                 if ((int)CreateEventScreen.Tag == -1) // created a new event
                 {
                     mCurrentAccount.HostEvent(CreateEvent_Image.Source, CreateEvent_NameInput.Text, CreateEvent_DescriptionInput.Text, CreateEvent_LocationInput.Text, selectedDate.Value);
+                    SelectEventsRibbon("Hosting");
                     GoBack();
                 }
                 else // edited an event
@@ -481,10 +613,9 @@ namespace pupper_hunt
                     Event toUpdate = Event.GetEvent((int)CreateEventScreen.Tag);
                     toUpdate.Update(CreateEvent_NameInput.Text, CreateEvent_DescriptionInput.Text, CreateEvent_LocationInput.Text, selectedDate.Value);
                     mGridStack.Pop().Visibility = Visibility.Hidden;
-                    PopulateCreateEventScreen(toUpdate); 
+                    PopulateCreateEventScreen(toUpdate);
                     mGridStack.Peek().Visibility = Visibility.Visible; // go back to the eventinfo screen
                 }
-
             }
             else
             {
@@ -493,68 +624,16 @@ namespace pupper_hunt
             }
         }
 
-        private void CreateEvent_CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CreateEvent(object sender, MouseButtonEventArgs e)
         {
-            GoBack();
-        }
-
-        private void CreateEvent(object sender, RoutedEventArgs e)
-        {
+            Ribbon.Visibility = Visibility.Hidden;
             PopulateCreateEventScreen();
             GoToScreen(CreateEventScreen);
         }
 
-        private void CreateNearbyEvents()
-        {
-            // make events
-        }
-
-        private DogOwnerAccount CreateFakeAccount()
-        {
-            DogOwnerAccount account = mAccountManager.AddAccount("john", "smith", Account.Type.DogOwner) as DogOwnerAccount;
-            account.AddDog(DogProfile.DogBreed.Husky, "Fido","Loves Fetch");
-            account.AddDog(DogProfile.DogBreed.Lab, "Rover", "RUFFF!");
-            return account;
-        }
-
-        private void GoToScreen(Grid screen, bool refreshRibbon = true)
-        {
-            if (mGridStack.Count > 0)
-            {
-                mGridStack.Peek().Visibility = Visibility.Hidden;
-            }
-            mGridStack.Push(screen);
-            screen.Visibility = Visibility.Visible;
-            if (refreshRibbon)
-            {
-                RefreshRibbonButtons();
-            }
-        }
-
-        private void GoBack(object sender, RoutedEventArgs e)
-        {
-            GoBack();
-        }
-
-        private void GoBack()
-        {
-            mGridStack.Pop().Visibility = Visibility.Hidden;
-            if (mGridStack.Count > 0)
-            {
-                Ribbon.Visibility = Visibility.Visible; // Back is only ever called from info screens so returning screen will have ribbon
-                mGridStack.Peek().Visibility = Visibility.Visible;
-            }
-            else
-            {
-                // back at login screen. Hide Ribbon
-                Ribbon.Visibility = Visibility.Hidden;
-                WelcomeScreen.Visibility = Visibility.Visible;
-                mGridStack.Push(WelcomeScreen);
-            }
-        }
-
         private void EventInfo_EditButton_Click(object sender, RoutedEventArgs e)
         {
+            Ribbon.Visibility = Visibility.Hidden;
             PopulateCreateEventScreen(Event.GetEvent((int)EventInfoScreen.Tag));
             GoToScreen(CreateEventScreen);
         }
@@ -565,7 +644,7 @@ namespace pupper_hunt
             if (attending.IsAttending(mCurrentAccount))
             {
                 mCurrentAccount.RetractAttendance(attending);
-                EventInfo_Attend.Content = "Attend!";       
+                EventInfo_Attend.Content = "Attend!";
             }
             else
             {
@@ -590,7 +669,7 @@ namespace pupper_hunt
             EventsScreen_Ribbon_Nearby_Mask.Visibility = Visibility.Visible;
             EventsScreen_Ribbon_Attending_Mask.Visibility = Visibility.Visible;
             EventsScreen_Ribbon_Hosting_Mask.Visibility = Visibility.Visible;
-            
+
 
             EventsScreen_EventList.Children.Clear();
             List<Event> events = new List<Event>();
@@ -612,13 +691,32 @@ namespace pupper_hunt
 
             double stackWidth = EventsScreen_EventList.Width;
 
-            foreach( Event e in events)
+            foreach (Event e in events)
             {
                 EventControl ec = new EventControl() { HorizontalAlignment = HorizontalAlignment.Center };
                 ec.Initialize(e);
                 EventsScreen_EventList.Children.Add(ec);
             }
-            
+        }
+
+        private void CreateEvent_CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            GoBack();
+        }
+        #endregion
+
+        private void CreateNearbyEvents()
+        {
+            // make events
+        }
+
+        private DogOwnerAccount CreateFakeAccount()
+        {
+            DogOwnerAccount account = mAccountManager.AddAccount("john", "smith", Account.Type.DogOwner) as DogOwnerAccount;
+            account.UpdateProfile("John Smith", "Best pupper owner you'll ever meet");
+            account.AddDog(DogBreed.Husky, DogPersonality.Friendly, "Fido","Loves Fetch");
+            account.AddDog(DogBreed.Lab, DogPersonality.Nervous, "Rover", "RUFFF!");
+            return account;
         }
     }
 }

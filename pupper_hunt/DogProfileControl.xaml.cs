@@ -32,12 +32,16 @@ namespace pupper_hunt
             
         }
 
-        public void Initialize(ImageSource image, string name, string breed, string bio)
+        public void Initialize(DogProfile profile)
         { 
-            (Image.Fill as ImageBrush).ImageSource = image;
-            DogName.Text = name;
-            DogBreed.Text = breed;
-            DogBio.Text = bio;
+            (Image.Fill as ImageBrush).ImageSource = profile.ImageSource;
+            DogName.Text = profile.Name;
+            DogBreed.Text = profile.Breed.ToString();
+            DogBio.Text = profile.Bio;
+            (DogPersonality.Foreground as SolidColorBrush).Color 
+                = (profile.Personality == pupper_hunt.DogPersonality.Friendly ? Color.FromRgb(0, 255, 0) 
+                : (profile.Personality == pupper_hunt.DogPersonality.Nervous ? Color.FromRgb(255, 255, 0) : Color.FromRgb(255,0,0)));
+            DogPersonality.Text = profile.Personality.ToString() ; 
         }
     }
 }

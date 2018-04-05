@@ -23,10 +23,12 @@
             <TextBlock x:Name="UsernameLabel" HorizontalAlignment="Left" Height="38.5" Margin="56,393,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
             <TextBlock x:Name="PasswordLabel" HorizontalAlignment="Left" Height="38.5" Margin="56,497.5,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="186" FontSize="24" FontWeight="Bold"/>
             <UniformGrid HorizontalAlignment="Left" Height="263.3" Margin="10,497.5,0,0" VerticalAlignment="Top" Width="232"/>
+            <Image x:Name="LoginScreen_BackButton" HorizontalAlignment="Left" Height="64" Margin="25,26.4,0,0" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack"/>
 
         </Grid>
         <Grid x:Name="SignUpScreen" d:IsHidden="True">
-            <TextBlock x:Name="WhoAreYouText" HorizontalAlignment="Center" Height="48" Margin="0,75,0,0" TextWrapping="Wrap" Text="Who Are You?" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
+            <Image x:Name="Signup_BackButton" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack" Margin="40.5,40.5,0,0"/>
+            <TextBlock x:Name="WhoAreYouText" HorizontalAlignment="Center" Height="48" Margin="56,109.5,58,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"><Run Text="Who "/><Run Text="A"/><Run Text="re You?"/></TextBlock>
             <Button x:Name="DogOwnerSelectButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164.342" Height="164.341" Background="{x:Null}" Click="DogOwnerSelectButton_Click" Margin="56,215,0,0" BorderBrush="{x:Null}">
                 <Grid x:Name="DogOwnerBubble" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Ellipse Fill="#FF499BFD" HorizontalAlignment="Left" Height="164.341" VerticalAlignment="Top" Width="164.342"/>
@@ -46,7 +48,7 @@
                 </Grid>
             </Button>
         </Grid>
-        <Grid x:Name="CreateAccountScreen" d:IsHidden="True">
+        <Grid x:Name="CreateAccountScreen">
             <Image x:Name="AccountBack" HorizontalAlignment="Left" Height="48" Margin="10,72,0,0" VerticalAlignment="Top" Width="58" MouseDown="GoBack" Source="back.png"/>
             <TextBlock x:Name="AccountBanner" HorizontalAlignment="Center" Height="48" Margin="68,72,44,0" TextWrapping="Wrap" Text="Account Details" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
             <TextBox x:Name="AccountUsernameField" HorizontalAlignment="Center" Height="54" Margin="68,281.5,44,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
@@ -74,14 +76,16 @@
         <Grid x:Name="DogEditScreen" d:IsHidden="True">
             <Button x:Name="DogEdit_CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="50" Margin="39.5,25.5,0,0" VerticalAlignment="Top" Width="87" Background="#79FF0000" BorderBrush="{x:Null}" FontSize="24" Click="GoBack"/>
             <Button x:Name="DogEdit_SaveButton" Content="Save" HorizontalAlignment="Left" Height="50" Margin="373,25.5,0,0" VerticalAlignment="Top" Width="89" Background="#7900FF5D" BorderBrush="{x:Null}" FontSize="24" Click="DogEdit_SaveButton_Click"/>
-            <Image x:Name="DogEdit_Image" HorizontalAlignment="Left" Height="141.5" Margin="167.5,201.5,0,0" VerticalAlignment="Top" Width="147.899" Stretch="Fill"/>
-            <TextBox x:Name="DogEdit_Name" HorizontalAlignment="Right" Height="40" Margin="0,384,50.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
-            <TextBlock x:Name="DogEdit_NameLabel" HorizontalAlignment="Left" Height="37" Margin="63.5,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252.722" FontSize="24" FontWeight="Bold"><Run Text="Name"/><LineBreak/><Run/></TextBlock>
-            <TextBox x:Name="DogEdit_Bio" HorizontalAlignment="Center" Height="125" Margin="63.5,466,50.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
-            <ComboBox x:Name="DogEdit_BreedSelector" HorizontalAlignment="Left" Height="54" Margin="66.5,647.5,0,0" VerticalAlignment="Top" Width="357" AutomationProperties.HelpText="&lt;Account Type&gt;" FontSize="24" Foreground="Black" SelectionChanged="DogEdit_BreedSelector_Changed"/>
-            <TextBlock x:Name="DogEdit_BreedLabel" HorizontalAlignment="Left" Height="37" Margin="66.5,605.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Breed"/>
-            <TextBlock x:Name="DogEdit_BioLabel_Copy" HorizontalAlignment="Left" Height="37" Margin="63.5,429,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Bio"/>
-            <TextBlock x:Name="DogEdit_WarningBanner" Visibility="Hidden" TextAlignment="Center" Height="37.5" Margin="40,101.5,40,0" TextWrapping="Wrap" Text="WARNING!" VerticalAlignment="Top" FontSize="24" Foreground="Red"/>
+            <Image x:Name="DogEdit_Image" HorizontalAlignment="Left" Height="141.5" Margin="167.323,132.5,0,0" VerticalAlignment="Top" Width="147.899" Stretch="Fill"/>
+            <TextBox x:Name="DogEdit_Name" HorizontalAlignment="Right" Height="40" Margin="0,311,51.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
+            <TextBlock x:Name="DogEdit_NameLabel" HorizontalAlignment="Left" Height="37" Margin="62.5,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252.722" FontSize="24" FontWeight="Bold"><Run Text="Name"/><LineBreak/><Run/></TextBlock>
+            <TextBox x:Name="DogEdit_Bio" HorizontalAlignment="Center" Height="125" Margin="62.5,393,51.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" FontSize="24"/>
+            <ComboBox x:Name="DogEdit_BreedSelector" HorizontalAlignment="Left" Height="54" Margin="65.5,574.5,0,0" VerticalAlignment="Top" Width="357" AutomationProperties.HelpText="&lt;Account Type&gt;" FontSize="24" Foreground="Black" SelectionChanged="DogEdit_BreedSelector_Changed"/>
+            <TextBlock x:Name="DogEdit_BreedLabel" HorizontalAlignment="Left" Height="37" Margin="65.5,532.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Breed"/>
+            <TextBlock x:Name="DogEdit_BioLabel_Copy" HorizontalAlignment="Left" Height="37" Margin="62.5,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Bio"/>
+            <TextBlock x:Name="DogEdit_WarningBanner" Visibility="Hidden" TextAlignment="Center" Height="37.5" Margin="40,72,40,0" TextWrapping="Wrap" Text="WARNING!" VerticalAlignment="Top" FontSize="24" Foreground="Red"/>
+            <ComboBox x:Name="DogEdit_PersonalitySelector" HorizontalAlignment="Left" Height="54" Margin="65.5,685.5,0,0" VerticalAlignment="Top" Width="357" AutomationProperties.HelpText="&lt;Account Type&gt;" FontSize="24" Foreground="Black" SelectionChanged="DogEdit_BreedSelector_Changed"/>
+            <TextBlock x:Name="DogEdit_PersonalityLabel" HorizontalAlignment="Left" Height="37" Margin="65.5,643.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="24" FontWeight="Bold" Text="Personality"/>
         </Grid>
         <Grid x:Name="ProfileScreen" d:IsHidden="True">
             <TextBlock x:Name="Profile_Name" HorizontalAlignment="Left" Height="40" Margin="233,224.5,0,0" TextWrapping="Wrap" Text="John Smith" VerticalAlignment="Top" Width="185" FontSize="24" Background="#190000DC"/>
@@ -99,6 +103,7 @@
                 <StackPanel x:Name="Profile_PupperList"/>
             </ScrollViewer>
             <Image x:Name="Profile_AddPupper" HorizontalAlignment="Left" Height="51" Margin="355.5,423.5,0,0" VerticalAlignment="Top" Width="62.5" Source="addDogIcon.jpg" Stretch="Fill" MouseDown="Profile_AddPupper_MouseDown"/>
+            <Image x:Name="Profile_BackButton" HorizontalAlignment="Left" Height="64" Margin="20,10,0,0" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack"/>
         </Grid>
         <Grid x:Name="DogInformationScreen" d:IsHidden="True">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"><Run Text="Breed"/><Run Text=" Name"/></TextBlock>
@@ -146,6 +151,7 @@
                 <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8"><Run FontWeight="Bold" Text="Energy"/></TextBlock>
             </UniformGrid>
             <Image x:Name="BreedPhoto" HorizontalAlignment="Left" Height="320" Margin="80,160,0,0" VerticalAlignment="Top" Width="320"/>
+            <Image x:Name="DogInfo_BackButton" HorizontalAlignment="Left" Height="64" Margin="25,26.4,0,0" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack"/>
         </Grid>
         <Grid x:Name="BusinessProfileScreen" d:IsHidden="True">
             <TextBlock x:Name="BusinessTitle" HorizontalAlignment="Left" Height="30" Margin="10,130.2,0,0" TextWrapping="Wrap" Text="Jims Jam Bar" VerticalAlignment="Top" Width="453.6" FontFamily="Magneto" FontSize="24" TextAlignment="Center"/>
@@ -185,31 +191,13 @@
                 </FlowDocument>
             </RichTextBox>
         </Grid>
-        <Grid x:Name="NewsFeedScreen" d:IsHidden="True">
-            <Grid x:Name="EventItem0" Margin="36,100,36,585">
-                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
-                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 2 hours at Curburn Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
-            </Grid>
-            <Grid x:Name="BusinessNewsItem0" Margin="36,210.5,36,506.5" Height="52">
-                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="52" VerticalAlignment="Top" Width="400"/>
-                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Ted's Pizzaria is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
-            </Grid>
-            <Grid x:Name="FriendPic0" Margin="36,288.5,0,0" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Rectangle Fill="#FFC7C7C7" Margin="0"/>
-                <TextBlock HorizontalAlignment="Center" Margin="10,0,10,10" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="24" Width="380"><Run/><LineBreak/><Run FontWeight="Bold" Text="Danny"/><LineBreak/><Run Text="Hey check out Fido playing fetch!"/></TextBlock>
-                <Rectangle Fill="#FF268B54" Height="223" VerticalAlignment="Top"/>
-            </Grid>
-            <Grid x:Name="EventItem1" Margin="36,617.5,36,67.5">
-                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="84" VerticalAlignment="Top" Width="400"/>
-                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="An Event is starting in 5 hours at Nose Hill Park" VerticalAlignment="Top" FontSize="24" Width="380"/>
-            </Grid>
-            <Grid x:Name="BusinessNewsItem1" Margin="36,0" Height="52" VerticalAlignment="Bottom">
-                <Rectangle Fill="#FFC7C7C7" HorizontalAlignment="Center" Height="52" VerticalAlignment="Top" Width="400"/>
-                <TextBlock HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Katie's Cafe is now dog friendly!" VerticalAlignment="Top" FontSize="24" Width="380"/>
-            </Grid>
+        <Grid x:Name="NewsFeedScreen">
+            <ScrollViewer x:Name="News_ScrollViewer" HorizontalAlignment="Left" Height="687" Margin="0,84,0,0" VerticalAlignment="Top" Width="474" VerticalScrollBarVisibility="Hidden" d:IsHidden="True">
+                <StackPanel x:Name="News_NotificationList"/>
+            </ScrollViewer>
         </Grid>
         <Grid x:Name="EventsScreen" d:IsHidden="True">
-            <Grid x:Name="DoSearchButton" Margin="74.25,159.5,85.5,564.5" RenderTransformOrigin="0.173,6.489">
+            <Grid x:Name="DoSearchButton" Margin="29.25,157.5,130.5,566.5" RenderTransformOrigin="0.173,6.489">
                 <Ellipse HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="21" Stroke="Black" StrokeThickness="3"/>
                 <Path Data="M453.25,141.25 L438.5,127.25" HorizontalAlignment="Left" Height="17" Margin="15.5,16.25,0,0" Stretch="Fill" Stroke="Black" StrokeThickness="3" VerticalAlignment="Top" Width="17.75"/>
                 <TextBox x:Name="SearchBox" Height="36" Margin="0,0,-33.25,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" FontSize="24" BorderBrush="Black"/>
@@ -225,6 +213,11 @@
             <ScrollViewer HorizontalAlignment="Left" Height="526" Margin="20,221.375,0,0" VerticalAlignment="Top" Width="434" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                 <StackPanel x:Name="EventsScreen_EventList" Width="434" Height="Auto"/>
             </ScrollViewer>
+            <Image x:Name="EventsScreen_CreateEvent" HorizontalAlignment="Left" Height="58.875" Margin="385,145.625,0,0" VerticalAlignment="Top" Width="69" Source="addDogIcon.jpg" Stretch="Fill" MouseDown="CreateEvent">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="addDogIcon.jpg"/>
+                </Image.OpacityMask>
+            </Image>
         </Grid>
         <Grid x:Name="HelpScreen" d:IsHidden="True">
             <TextBox x:Name="SearchBox1" HorizontalAlignment="Center" Height="36" Margin="36,110,88.5,0" TextWrapping="Wrap" Text="What do you need help with?" VerticalAlignment="Top" Width="347.5" FontSize="24" BorderBrush="Black"/>
@@ -254,7 +247,7 @@
             <Image x:Name="Ribbon_DogInfoIcon" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="98" Margin="364,5,0,0" Source="ribbon_dogInfo.png" Stretch="Fill" MouseDown="Ribbon_DogInfoButton_Click"/>
         </Grid>
         <Grid x:Name="CreateEventScreen" d:IsHidden="True">
-            <Image x:Name="CreateEvent_Image" HorizontalAlignment="Left" Height="207.419" Margin="0,10,0,0" VerticalAlignment="Top" Width="472" Source="event.jpg" Stretch="Fill"/>
+            <Image x:Name="CreateEvent_Image" Height="217.419" VerticalAlignment="Top" Source="event.jpg" Stretch="Fill"/>
             <TextBlock x:Name="CreateEvent_NameLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,259.242,0,0" TextWrapping="Wrap" Text="Event Name:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
             <TextBox x:Name="CreateEvent_NameInput" HorizontalAlignment="Left" Height="33.819" Margin="161.031,261.199,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="300.969" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
             <TextBlock x:Name="CreateEvent_LocationLabel" HorizontalAlignment="Left" Height="35.776" Margin="10,306.974,0,0" TextWrapping="Wrap" Text="Location:" VerticalAlignment="Top" Width="151.031" FontSize="24" FontWeight="Bold"/>
@@ -274,27 +267,24 @@
             <TextBox x:Name="CreateEvent_DescriptionInput" HorizontalAlignment="Left" Height="175.5" Margin="10,470.981,0,0" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" VerticalAlignment="Top" Width="452" Background="#FFCADFFF" FontSize="22" BorderBrush="{x:Null}"/>
             <Button x:Name="CreateEvent_CreateButton" Content="Finish!" HorizontalAlignment="Left" Height="69.478" Margin="253.391,669.522,0,0" VerticalAlignment="Top" Width="208.609" BorderBrush="#FFCADFFF" Background="#FF94FF99" FontSize="24" FontWeight="Bold" Click="CreateEvent_CreateButton_Click"/>
             <Button x:Name="CreateEvent_CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="69.478" Margin="10,669.522,0,0" VerticalAlignment="Top" Width="207.615" BorderBrush="#FFCADFFF" Background="#FFFFE4E4" FontSize="24" FontWeight="Bold" Click="CreateEvent_CancelButton_Click"/>
-            <TextBlock x:Name="CreateEvent_WarningBanner" HorizontalAlignment="Left" TextAlignment="Center" Height="35.745" Margin="0,259.242,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="472" FontWeight="Bold" FontSize="22" Foreground="Red" Visibility="Hidden"/>
+            <TextBlock x:Name="CreateEvent_WarningBanner" HorizontalAlignment="Left" TextAlignment="Center" Height="35.745" Margin="2,222.419,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="472" FontWeight="Bold" FontSize="22" Foreground="Red" Visibility="Hidden"/>
         </Grid>
         <Grid x:Name="EventInfoScreen" d:IsHidden="True">
             <Image x:Name="EventInfo_Image" HorizontalAlignment="Left" Height="241" VerticalAlignment="Top" Width="472" Source="event.jpg" Stretch="Fill"/>
             <TextBlock x:Name="EventInfo_Month" TextAlignment="Center" HorizontalAlignment="Left" Height="34.5" Margin="22,246,0,0" TextWrapping="Wrap" Text="Apr" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="ExtraBold" Foreground="Red"/>
             <TextBlock x:Name="EventInfo_Day" TextAlignment="Center" HorizontalAlignment="Left" Height="36.5" Margin="22,280.5,0,0" TextWrapping="Wrap" Text="13" VerticalAlignment="Top" Width="70.5" FontSize="24" FontWeight="Bold"/>
             <TextBlock x:Name="EventInfo_Name" HorizontalAlignment="Left" Height="35.5" Margin="118.5,253.633,0,0" TextWrapping="Wrap" Text="Event Name!!!" VerticalAlignment="Top" Width="343.5" FontSize="24" FontWeight="SemiBold"/>
-            <TextBlock x:Name="EventInfo_HostName" HorizontalAlignment="Left" Height="26.5" Margin="118.5,289.133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343.5" FontSize="16" Foreground="#FF8D8D8D"><Run Text="Hosted by John"/><LineBreak/><Run/></TextBlock>
+            <TextBlock x:Name="EventInfo_HostedByLabel" HorizontalAlignment="Left" Height="26.5" Margin="118.5,289.133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79.5" FontSize="16" Foreground="#FF8D8D8D" Text="Hosted by"/>
             <Rectangle x:Name="spacer" HorizontalAlignment="Left" Height="2" Margin="22,388.5,0,0" Stroke="#FF838383" StrokeThickness="3" VerticalAlignment="Top" Width="430"/>
             <TextBlock x:Name="EventInfo_Info" HorizontalAlignment="Left" Height="68.5" Margin="38.5,322,0,0" TextWrapping="Wrap" Text="Information about the event it will be so cool you don't even know!!!" VerticalAlignment="Top" Width="413.5" FontSize="18"/>
             <TextBlock x:Name="EventInfo_AttendingLabel" HorizontalAlignment="Left" Height="39.5" Margin="38.5,395.5,0,0" TextWrapping="Wrap" Text="Going:" VerticalAlignment="Top" Width="413.5" FontSize="22" FontWeight="SemiBold"/>
-            <ListView x:Name="EventInfo_AttendanceList" HorizontalAlignment="Left" Height="263" Margin="33.5,432,0,0" VerticalAlignment="Top" Width="418.5" BorderBrush="{x:Null}" Foreground="Black" Background="#FFE0E1F0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
             <Button x:Name="EventInfo_Attend" Content="Attend!" HorizontalAlignment="Left" Height="37" Margin="293,711,0,0" VerticalAlignment="Top" Width="154" BorderBrush="{x:Null}" Background="#198A8FFF" FontSize="20" Click="EventInfo_AttendToggle_Click"/>
             <Button x:Name="EventInfo_BackButton" Content="Back" HorizontalAlignment="Left" Height="37" Margin="38.5,711,0,0" VerticalAlignment="Top" Width="172.5" BorderBrush="{x:Null}" Background="#198A8FFF" FontSize="20" Click="GoBack"/>
             <Button x:Name="EventInfo_EditButton" Content="Edit" HorizontalAlignment="Left" Height="37" Margin="293,711,0,0" VerticalAlignment="Top" Width="154" BorderBrush="{x:Null}" Background="#198A8FFF" FontSize="20" Click="EventInfo_EditButton_Click"/>
+            <ScrollViewer x:Name="EventInfo_AttendanceScroll" HorizontalAlignment="Left"  Height="95" Margin="37,434,0,0" VerticalAlignment="Top" Width="410" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                <StackPanel x:Name="EventInfo_AttendanceList" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" CanHorizontallyScroll="True"/>
+            </ScrollViewer>
+            <TextBlock x:Name="EventInfo_HostedByLink" HorizontalAlignment="Left" Height="26.5" Margin="198,289.133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79.5" FontSize="16" Foreground="#FF8D8D8D" MouseDown="ProfileLink_Click" TextDecorations="Underline"><Run Foreground="Black" Text="Jaime"/></TextBlock>
         </Grid>
     </Grid>
 </Window>

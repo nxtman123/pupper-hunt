@@ -34,40 +34,42 @@ namespace pupper_hunt
         }
     }
 
+    public enum DogBreed
+    {
+        Corgi,
+        Husky,
+        Lab,
+        NUM
+    }
+
+    public enum DogPersonality
+    {
+        Aggressive,
+        Nervous,
+        Friendly,
+        NUM
+    }
+
 
     public class DogProfile : Profile
     {
-        public enum DogBreed
-        {
-            Corgi,
-            Husky,
-            Lab,
-            NUM
-        }
-
-        public enum FriendlinessRating
-        {
-            Bad,
-            Medium,
-            Good
-        }
-
         public DogBreed Breed;
-        public FriendlinessRating Rating;
+        public DogPersonality Personality;
 
-        public DogProfile(DogBreed breed, FriendlinessRating rating, string name, string bio)
+        public DogProfile(DogBreed breed, DogPersonality personality, string name, string bio)
             : base(name, bio, ImageManager.GetImageSource(breed.ToString().ToLower() + "Profile"))
         {
             Breed = breed;
-            Rating = rating;
+            Personality = personality;
         }
 
-        public void UpdateInfo(DogBreed breed, string name, string bio)
+        public void UpdateInfo(DogBreed breed, DogPersonality personality, string name, string bio)
         {
             ImageSource = ImageManager.GetImageSource(breed.ToString().ToLower() + "Profile");
             Breed = breed;
             Name = name;
             Bio = bio;
+            Personality = personality;
         }
     }
 }

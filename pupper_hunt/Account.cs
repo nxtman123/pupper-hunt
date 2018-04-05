@@ -14,6 +14,7 @@ namespace pupper_hunt
             DogOwner,
             BusinessOwner
         }
+        private static int kNumDogOwnerAccountsCreated = 0;
 
         public string AccountName { get; private set; }
         public string AccountPassword { get; private set; }
@@ -35,24 +36,29 @@ namespace pupper_hunt
             }
             else if (type == Type.DogOwner)
             {
-                source = ImageManager.GetImageSource("dogOwnerProfile");
+                string imageString = "dogOwnerProfile" + ((kNumDogOwnerAccountsCreated % 4) + 1).ToString();
+                source = ImageManager.GetImageSource(imageString);
+                kNumDogOwnerAccountsCreated++;
             }
             Profile = new Profile("", "", source);
 
             HostedEvents = new List<Event>();
             AttendingEvents = new List<Event>();
+            Notification.PostNotification(new NewUserNotification(this));
         }
 
         public void AttendEvent(Event toAttend)
         {
             AttendingEvents.Add(toAttend);
             toAttend.Attend(this);
+            Notification.PostNotification(new GoingToEventNotification(this, toAttend));
         }
 
         public Event HostEvent(ImageSource image, string name, string description, string location, DateTime time)
         {
             Event hostedEvent = new Event(this, image, name, description, location, time);
             HostedEvents.Add(hostedEvent);
+            Notification.PostNotification(new NewEventNotification(hostedEvent));
             return hostedEvent;
         }
 
@@ -109,10 +115,11 @@ namespace pupper_hunt
             Dogs = new List<DogProfile>();
         }
 
-        public DogProfile AddDog(DogProfile.DogBreed breed, string name, string bio)
+        public DogProfile AddDog(DogBreed breed, DogPersonality personality, string name, string bio)
         {
-            DogProfile newDog = new DogProfile(breed, DogProfile.FriendlinessRating.Good, name, bio);
+            DogProfile newDog = new DogProfile(breed, personality, name, bio);
             Dogs.Add(newDog);
+            Notification.PostNotification(new DogNotification(this, newDog));
             return newDog;
         }
 
@@ -121,9 +128,9 @@ namespace pupper_hunt
             Dogs.RemoveAt(atIndex);
         }
 
-        public void UpdateDog(int dogNumber, DogProfile.DogBreed breed, string name, string bio)
+        public void UpdateDog(int dogNumber, DogBreed breed, DogPersonality personality, string name, string bio)
         {
-            Dogs[dogNumber].UpdateInfo(breed, name, bio);
+            Dogs[dogNumber].UpdateInfo(breed, personality, name, bio);
         }
     }
 
