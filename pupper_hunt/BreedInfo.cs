@@ -16,11 +16,11 @@ namespace pupper_hunt
         public string About { get; }
         public string Name { get; }
 
-        public BreedInfo(DogProfile.DogBreed breed)
+        public BreedInfo(DogBreed breed)
         {
             switch (breed)
             {
-                case (DogProfile.DogBreed.Corgi):
+                case (DogBreed.Corgi):
                     Adaptable = 4;
                     Friendly = 4;
                     Healthy = 3;
@@ -29,7 +29,7 @@ namespace pupper_hunt
                     Name = "Pembrooke Corgi";
                     About = "Originally bred to herd cattle, sheep, and horses, the Pembroke Welsh Corgi is an active and intelligent dog breed. Easy to train and eager to learn, Pembrokes are great with children and other pets, and you can find them in four different coat colors and markings.";
                     break;
-                case (DogProfile.DogBreed.Husky):
+                case (DogBreed.Husky):
                     Adaptable = 2;
                     Friendly = 5;
                     Healthy = 3;
@@ -38,7 +38,7 @@ namespace pupper_hunt
                     Name = "Siberian Husky";
                     About = "The Siberian Husky is a beautiful dog breed with a thick coat that comes in a multitude of colors and markings. This athletic, intelligent dog can be independent and challenging for first-time dog owners. Huskies put the “H” in Houdini.";
                     break;
-                case (DogProfile.DogBreed.Lab):
+                case (DogBreed.Lab):
                     Adaptable = 3;
                     Friendly = 5;
                     Healthy = 4;
