@@ -80,6 +80,7 @@
     <Compile Include="BackButtonControl.xaml.cs">
       <DependentUpon>BackButtonControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BreedInfo.cs" />
     <Compile Include="DogProfileControl.xaml.cs">
       <DependentUpon>DogProfileControl.xaml</DependentUpon>
     </Compile>

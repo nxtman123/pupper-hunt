@@ -100,20 +100,19 @@
             </ScrollViewer>
             <Image x:Name="Profile_AddPupper" HorizontalAlignment="Left" Height="51" Margin="355.5,423.5,0,0" VerticalAlignment="Top" Width="62.5" Source="addDogIcon.jpg" Stretch="Fill" MouseDown="Profile_AddPupper_MouseDown"/>
         </Grid>
-        <Grid x:Name="DogInformationScreen" d:IsHidden="True">
+        <Grid x:Name="DogInformationScreen">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"><Run Text="Breed"/><Run Text=" Name"/></TextBlock>
-            <RichTextBox x:Name="BreedInfoText" HorizontalAlignment="Left" Height="204.4" Margin="241.6,500,0,0" VerticalAlignment="Top" Width="222" FontWeight="Bold">
+            <RichTextBox x:Name="BreedInfoText" HorizontalAlignment="Left" Height="240" Margin="250,500.1,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold">
                 <FlowDocument>
                     <Paragraph>
                         <Run Text="Information"/>
                     </Paragraph>
                     <Paragraph>
-                        <Run FontWeight="Normal" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint"/>
+                        <Run x:Name="InfoText" FontWeight="Normal" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint"/>
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <Button x:Name="MoreInfoButton" Content="More Information" HorizontalAlignment="Left" Height="41.9" Margin="241.6,718.5,0,0" VerticalAlignment="Top" Width="222"/>
-            <UniformGrid x:Name="StatBlock" Height="240" Margin="25,500,249,30.8" Width="200" Columns="5" Rows="6">
+            <UniformGrid x:Name="StatBlock" Height="240" Margin="25,500,250,30.8" Width="200" Columns="5" Rows="6">
                 <Rectangle x:Name="a5" Fill="#FF499BFD" Margin="2"  Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
                 <Rectangle x:Name="f5" Fill="#FF499BFD" Margin="2" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
                 <Rectangle x:Name="h5" Fill="#FF499BFD" Margin="2" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
