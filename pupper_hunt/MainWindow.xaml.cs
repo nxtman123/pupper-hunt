@@ -444,6 +444,29 @@ namespace pupper_hunt
             InfoText.Text = breed_info.About;
             BreedTitle.Text = breed_info.Name;
             BreedPhoto.Source = ImageManager.GetImageSource(dogBreed.ToString().ToLower() + "Profile");
+            FillRatingBoxes("a", breed_info.Adaptable);
+            FillRatingBoxes("e", breed_info.Energy);
+            FillRatingBoxes("f", breed_info.Friendly);
+            FillRatingBoxes("h", breed_info.Healthy);
+            FillRatingBoxes("t", breed_info.Trainable);
+        }
+
+        private void FillRatingBoxes(string prefix, int value)
+        {
+            for(int i = 1; i <= 5; i++)
+            {
+                string name = prefix + i.ToString();
+                Rectangle foundBox = UIChildFinder.FindChild<Rectangle>(Application.Current.MainWindow, name);
+                if( i <= value)
+                {
+                    foundBox.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF499BFD"));
+                }
+                else
+                {
+                    foundBox.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                }
+
+            }
         }
 
         #endregion
