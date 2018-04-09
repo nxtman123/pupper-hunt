@@ -53,6 +53,7 @@ namespace pupper_hunt
             ProfileEditScreen.Visibility = Visibility.Hidden;
             DogEditScreen.Visibility = Visibility.Hidden;
             ProfileScreen.Visibility = Visibility.Hidden;
+            BrowseBreedScreen.Visibility = Visibility.Hidden;
             DogInformationScreen.Visibility = Visibility.Hidden;
             BusinessProfileScreen.Visibility = Visibility.Hidden;
             NewsFeedScreen.Visibility = Visibility.Hidden;
@@ -243,7 +244,7 @@ namespace pupper_hunt
         {
             if (mGridStack.Peek() != HelpScreen)
             {
-                GoToScreen(DogInformationScreen);
+                GoToScreen(BrowseBreedScreen);
             }
         }
 
@@ -416,26 +417,49 @@ namespace pupper_hunt
         public void NavigateToDogScreen(object sender, MouseButtonEventArgs e)
         {
             TextBlock tb = sender as TextBlock;
+            Grid nextScreen = BrowseBreedScreen;
             if (tb != null)
             {
                 string content = tb.Text;
-
+                
                 DogBreed breedToShow = DogBreed.Corgi;
                 if (content.Equals(DogBreed.Corgi.ToString()))
                 {
                     breedToShow = DogBreed.Corgi;
+                    nextScreen = DogInformationScreen;
                 }
                 else if (content.Equals(DogBreed.Husky.ToString()))
                 {
                     breedToShow = DogBreed.Husky;
+                    nextScreen = DogInformationScreen;
                 }
                 else if (content.Equals(DogBreed.Lab.ToString()))
                 {
                     breedToShow = DogBreed.Lab;
+                    nextScreen = DogInformationScreen;
                 }
+                
                 PopulateDogInformationScreen(breedToShow);
-                GoToScreen(DogInformationScreen);
             }
+            GoToScreen(nextScreen);
+        }
+
+        private void CorgiExplore_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PopulateDogInformationScreen(DogBreed.Corgi);
+            GoToScreen(DogInformationScreen);
+        }
+
+        private void LabExplore_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PopulateDogInformationScreen(DogBreed.Lab);
+            GoToScreen(DogInformationScreen);
+        }
+
+        private void HuskyExplore_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PopulateDogInformationScreen(DogBreed.Husky);
+            GoToScreen(DogInformationScreen);
         }
 
         private void PopulateDogInformationScreen(DogBreed dogBreed)
@@ -744,5 +768,7 @@ namespace pupper_hunt
             account.AddDog(DogBreed.Lab, DogPersonality.Nervous, "Rover", "RUFFF!");
             return account;
         }
+
+        
     }
 }

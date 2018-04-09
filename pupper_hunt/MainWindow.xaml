@@ -48,7 +48,7 @@
                 </Grid>
             </Button>
         </Grid>
-        <Grid x:Name="CreateAccountScreen">
+        <Grid x:Name="CreateAccountScreen" d:IsHidden="True">
             <Image x:Name="AccountBack" HorizontalAlignment="Left" Height="48" Margin="10,72,0,0" VerticalAlignment="Top" Width="58" MouseDown="GoBack" Source="back.png"/>
             <TextBlock x:Name="AccountBanner" HorizontalAlignment="Center" Height="48" Margin="68,72,44,0" TextWrapping="Wrap" Text="Account Details" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"/>
             <TextBox x:Name="AccountUsernameField" HorizontalAlignment="Center" Height="54" Margin="68,281.5,44,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" BorderBrush="Black" Background="{x:Null}" FontSize="36"/>
@@ -105,7 +105,21 @@
             <Image x:Name="Profile_AddPupper" HorizontalAlignment="Left" Height="51" Margin="355.5,423.5,0,0" VerticalAlignment="Top" Width="62.5" Source="addDogIcon.jpg" Stretch="Fill" MouseDown="Profile_AddPupper_MouseDown"/>
             <Image x:Name="Profile_BackButton" HorizontalAlignment="Left" Height="64" Margin="20,10,0,0" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack"/>
         </Grid>
-        <Grid x:Name="DogInformationScreen">
+        <Grid x:Name="BrowseBreedScreen" d:IsHidden="True">
+            <TextBlock x:Name="BreedTitle_Copy" HorizontalAlignment="Center" Height="48" Margin="57.8,95.4,56.2,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto" Text="Dog Breeds"/>
+            <TreeView HorizontalAlignment="Left" Height="475" Margin="80,165,0,0" VerticalAlignment="Top" Width="320" FontSize="36">
+                <TreeViewItem Header="Working Dogs">
+                    <TreeViewItem x:Name="HuskyExplore" Header="Siberian Husky" FontSize="24" MouseDoubleClick="HuskyExplore_MouseDoubleClick"></TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="Herding Dogs">
+                    <TreeViewItem x:Name="CorgiExplore" Header="Pembrooke Corgi" FontSize="24" MouseDoubleClick="CorgiExplore_MouseDoubleClick"></TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="Sporting Dogs">
+                    <TreeViewItem x:Name="LabExplore" Header="Labarador Retriever" FontSize="24" MouseDoubleClick="LabExplore_MouseDoubleClick"></TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
+        </Grid>
+        <Grid x:Name="DogInformationScreen" d:IsHidden="True">
             <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"><Run Text="Breed"/><Run Text=" Name"/></TextBlock>
             <RichTextBox x:Name="BreedInfoText" HorizontalAlignment="Left" Height="240" Margin="250,500.1,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold">
                 <FlowDocument>
@@ -150,7 +164,7 @@
                 <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8"><Run FontWeight="Bold" Text="Energy"/></TextBlock>
             </UniformGrid>
             <Image x:Name="BreedPhoto" HorizontalAlignment="Left" Height="320" Margin="80,160,0,0" VerticalAlignment="Top" Width="320"/>
-            <Image x:Name="DogInfo_BackButton" HorizontalAlignment="Left" Height="64" Margin="25,26.4,0,0" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack"/>
+            <Image x:Name="DogInfo_BackButton" HorizontalAlignment="Left" Height="64" Margin="10,88.4,0,0" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack" RenderTransformOrigin="0.597,0.219"/>
         </Grid>
         <Grid x:Name="BusinessProfileScreen" d:IsHidden="True">
             <TextBlock x:Name="BusinessTitle" HorizontalAlignment="Left" Height="30" Margin="10,130.2,0,0" TextWrapping="Wrap" Text="Jims Jam Bar" VerticalAlignment="Top" Width="453.6" FontFamily="Magneto" FontSize="24" TextAlignment="Center"/>
@@ -190,7 +204,7 @@
                 </FlowDocument>
             </RichTextBox>
         </Grid>
-        <Grid x:Name="NewsFeedScreen">
+        <Grid x:Name="NewsFeedScreen" d:IsHidden="True">
             <ScrollViewer x:Name="News_ScrollViewer" HorizontalAlignment="Left" Height="687" Margin="0,84,0,0" VerticalAlignment="Top" Width="474" VerticalScrollBarVisibility="Hidden" d:IsHidden="True">
                 <StackPanel x:Name="News_NotificationList"/>
             </ScrollViewer>
