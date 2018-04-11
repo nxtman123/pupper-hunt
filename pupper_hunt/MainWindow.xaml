@@ -119,9 +119,10 @@
                 </TreeViewItem>
             </TreeView>
         </Grid>
-        <Grid x:Name="DogInformationScreen" d:IsHidden="True">
-            <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.6,95.4,56,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"><Run Text="Breed"/><Run Text=" Name"/></TextBlock>
-            <RichTextBox x:Name="BreedInfoText" HorizontalAlignment="Left" Height="240" Margin="250,500.1,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold">
+        <Grid x:Name="DogInformationScreen">
+            <Image x:Name="BreedPhoto" HorizontalAlignment="Left" Height="320" Margin="80,160,0,0" VerticalAlignment="Top" Width="320"/>
+            <TextBlock x:Name="BreedTitle" HorizontalAlignment="Center" Height="48" Margin="57.8,95.4,56.2,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Magneto"><Run Text="Breed"/><Run Text=" Name"/></TextBlock>
+            <RichTextBox x:Name="BreedInfoText" HorizontalAlignment="Center" Height="240" Margin="249,500.1,25,30.9" VerticalAlignment="Center" Width="200" FontWeight="Bold" Grid.RowSpan="2">
                 <FlowDocument>
                     <Paragraph>
                         <Run Text="Information"/>
@@ -131,7 +132,7 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <UniformGrid x:Name="StatBlock" Height="240" Margin="25,500,250,30.8" Width="200" Columns="5" Rows="6">
+            <UniformGrid x:Name="StatBlock" Margin="25,0,0,30.9" Width="200" Columns="5" Rows="6" MaxWidth="200" MaxHeight="240" ScrollViewer.VerticalScrollBarVisibility="Disabled"  HorizontalAlignment="Left" Height="240" VerticalAlignment="Bottom">
                 <Rectangle x:Name="a5" Fill="#FF499BFD" Margin="2"  Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
                 <Rectangle x:Name="f5" Fill="#FF499BFD" Margin="2" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
                 <Rectangle x:Name="h5" Fill="#FF499BFD" Margin="2" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
@@ -157,13 +158,56 @@
                 <Rectangle x:Name="h1" Fill="#FF499BFD" Margin="2" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
                 <Rectangle x:Name="t1" Fill="#FF499BFD" Margin="2" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
                 <Rectangle x:Name="e1" Fill="#FF499BFD" Margin="2" Stroke="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" StrokeThickness="2"/>
-                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Adaptable" FontWeight="Bold"/>
-                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Friendly" FontWeight="Bold"/>
-                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Healthy" FontWeight="Bold"/>
-                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Trainable" FontWeight="Bold"/>
-                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8"><Run FontWeight="Bold" Text="Energy"/></TextBlock>
+                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Adaptable" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Friendly" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Healthy" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" Text="Trainable" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="8" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform><Run FontWeight="Bold" Text="Energy"/></TextBlock>
             </UniformGrid>
-            <Image x:Name="BreedPhoto" HorizontalAlignment="Left" Height="320" Margin="80,160,0,0" VerticalAlignment="Top" Width="320"/>
             <Image x:Name="DogInfo_BackButton" HorizontalAlignment="Left" Height="64" Margin="10,88.4,0,0" VerticalAlignment="Top" Width="67" Source="back.png" MouseDown="GoBack" RenderTransformOrigin="0.597,0.219"/>
         </Grid>
         <Grid x:Name="BusinessProfileScreen" d:IsHidden="True">
